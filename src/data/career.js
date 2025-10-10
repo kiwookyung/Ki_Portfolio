@@ -1,0 +1,90 @@
+export const career = [
+  {
+    id: 1,
+    period: "2025.01 - 2025.12",
+    title: "SSAFY (삼성 청년 SW 아카데미)",
+    description: "프론트엔드 개발자 과정 수료",
+    details: [
+      "Vue.js, React.js 기반 웹 개발 학습",
+      "AIoT 프로젝트를 통한 실무 경험",
+      "팀 프로젝트를 통한 협업 능력 향상",
+      "프로젝트 우수상 수상",
+    ],
+    type: "education",
+  },
+  {
+    id: 2,
+    period: "2025.07 - 2025.08",
+    title: "FloodGuard AIoT 프로젝트",
+    description: "지능형 CCTV 기반 침수 예방 시스템 개발",
+    details: [
+      "React 대시보드 개발 및 WebSocket 실시간 스트리밍 구현",
+      "AI 모델과 IoT 센서 연동 시스템 구축",
+      "팀 프로젝트 우수상 수상",
+      "침수 감지 정확도 95% 달성",
+    ],
+    type: "project",
+  },
+  {
+    id: 3,
+    period: "2025.05 - 2025.06",
+    title: "영화 추천 커뮤니티 프로젝트",
+    description: "Vue + Django 기반 영화 추천 서비스 개발",
+    details: [
+      "프론트엔드 UI/UX 설계 및 구현",
+      "영화 API 연동 및 추천 알고리즘 구현",
+      "사용자 만족도 90% 달성",
+      "월간 활성 사용자 500명 달성",
+    ],
+    type: "project",
+  },
+  {
+    id: 4,
+    period: "2023.09 - 2023.12",
+    title: "창업대회 프로젝트",
+    description: "사회문제 해결을 위한 창업 아이디어 기획",
+    details: [
+      "팀장으로서 프로젝트 기획 및 진행",
+      "사용자 인터뷰 및 시장조사 수행",
+      "프로토타입 개발 및 투자자 피칭",
+      "창업대회 본선 진출 및 투자자 관심 3건",
+    ],
+    type: "competition",
+  },
+  {
+    id: 5,
+    period: "2023.06 - 2023.08",
+    title: "웹 개발 기초 학습",
+    description: "HTML, CSS, JavaScript 기반 웹 개발",
+    details: [
+      "반응형 웹사이트 구축",
+      "프론트엔드 개발 기초 다지기",
+      "Git을 활용한 버전 관리 학습",
+      "프로젝트 우수상 및 코드 품질 A등급",
+    ],
+    type: "education",
+  },
+];
+export const certificates = [
+  {
+    id: 1,
+    name: "SSAFY 프론트엔드 개발자 과정 수료",
+    issuer: "삼성 청년 SW 아카데미",
+    date: "2024.06",
+    description: "Vue.js, React.js 기반 웹 개발 과정 수료",
+  },
+  {
+    id: 2,
+    name: "창업대회 본선 진출",
+    issuer: "지역 창업 지원 센터",
+    date: "2023.12",
+    description: "사회문제 해결 창업 아이디어 대회 본선 진출",
+  },
+  {
+    id: 3,
+    name: "프로젝트 우수상",
+    issuer: "SSAFY",
+    date: "2024.06",
+    description: "AIoT 프로젝트 우수상 수상",
+  },
+];

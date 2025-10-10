@@ -1,0 +1,37 @@
+export const skills = {
+  frontend: [
+    { name: "React", level: 85, icon: "⚛️" },
+    { name: "Vue", level: 80, icon: "💚" },
+    { name: "JavaScript", level: 90, icon: "🟨" },
+    { name: "TypeScript", level: 75, icon: "🔷" },
+    { name: "HTML/CSS", level: 95, icon: "🌐" },
+    { name: "Tailwind CSS", level: 80, icon: "🎨" },
+    { name: "MUI", level: 85, icon: "🎯" },
+    { name: "Bootstrap", level: 90, icon: "📱" },
+  ],
+  backend: [
+    { name: "Django", level: 75, icon: "🐍" },
+    { name: "Python", level: 80, icon: "🐍" },
+    { name: "REST API", level: 85, icon: "🔌" },
+    { name: "Node.js", level: 70, icon: "🟢" },
+    { name: "Express", level: 70, icon: "🚂" },
+    { name: "MySQL", level: 75, icon: "🐬" },
+    { name: "MongoDB", level: 70, icon: "🍃" },
+  ],
+  tools: [
+    { name: "Git", level: 90, icon: "📚" },
+    { name: "GitHub", level: 90, icon: "🐙" },
+    { name: "Figma", level: 85, icon: "🎨" },
+    { name: "Adobe XD", level: 80, icon: "✏️" },
+    { name: "VS Code", level: 95, icon: "💻" },
+    { name: "Postman", level: 80, icon: "📮" },
+    { name: "Docker", level: 65, icon: "🐳" },
+    { name: "AWS", level: 60, icon: "☁️" },
+  ],
+  ai: [
+    { name: "OpenCV", level: 70, icon: "👁️" },
+    { name: "MQTT", level: 75, icon: "📡" },
+    { name: "WebSocket", level: 80, icon: "🔌" },
+    { name: "TensorFlow", level: 60, icon: "🧠" },
+  ],
+};
