@@ -19,13 +19,34 @@ const ProjectsPage = () => {
     setSelectedProject(null);
   };
 
+  // 프로젝트 타입 분류 함수
+  const getProjectType = (teamSize) => {
+    return teamSize.includes('1명') || teamSize.includes('개인') ? '개인' : '팀';
+  };
+
   // 필터링된 프로젝트
   const filteredProjects = filter === 'all'
     ? projects
-    : projects.filter(p => p.tech.some(tech => tech.toLowerCase().includes(filter.toLowerCase())));
+    : filter === '개인'
+      ? projects.filter(p => getProjectType(p.teamSize) === '개인')
+      : filter === '팀'
+        ? projects.filter(p => getProjectType(p.teamSize) === '팀')
+        : projects;
 
-  // 주요 기술 스택
-  const mainTechs = ['React', 'Vue', 'Django', 'Python', 'JavaScript'];
+  // 필터 옵션
+  const filterOptions = [
+    { key: 'all', label: '전체', count: projects.length },
+    {
+      key: '개인',
+      label: '개인 프로젝트',
+      count: projects.filter(p => getProjectType(p.teamSize) === '개인').length
+    },
+    {
+      key: '팀',
+      label: '팀 프로젝트',
+      count: projects.filter(p => getProjectType(p.teamSize) === '팀').length
+    }
+  ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-purple-50">
@@ -58,25 +79,16 @@ const ProjectsPage = () => {
               <Filter size={20} />
               <span>필터:</span>
             </div>
-            <button
-              onClick={() => setFilter('all')}
-              className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${filter === 'all'
-                ? 'bg-blue-600 text-white shadow-lg scale-105'
-                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                }`}
-            >
-              전체 ({projects.length})
-            </button>
-            {mainTechs.map((tech) => (
+            {filterOptions.map((option) => (
               <button
-                key={tech}
-                onClick={() => setFilter(tech)}
-                className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${filter === tech
+                key={option.key}
+                onClick={() => setFilter(option.key)}
+                className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${filter === option.key
                   ? 'bg-blue-600 text-white shadow-lg scale-105'
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                   }`}
               >
-                {tech} ({projects.filter(p => p.tech.includes(tech)).length})
+                {option.label} ({option.count})
               </button>
             ))}
           </div>

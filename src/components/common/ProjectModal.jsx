@@ -62,13 +62,34 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
                     <Calendar size={16} className="mr-2" />
                     <span>{project.period}</span>
                   </div>
-                  <div className="flex items-center text-gray-600">
-                    <Users size={16} className="mr-2" />
-                    <span>팀원: {project.teamSize}</span>
+                  <div className="text-gray-600">
+                    <div className="flex items-center mb-2">
+                      <Users size={16} className="mr-2" />
+                      <span className="font-medium">팀원:</span>
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      {project.teamSize.split(/[,(]/).map((member, index) => (
+                        <span
+                          key={index}
+                          className="bg-green-50 text-green-700 px-3 py-1 rounded-full text-sm font-medium"
+                        >
+                          {member.trim().replace(/[()]/g, '')}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                  <div className="flex items-center text-gray-600">
+                  <div className="text-gray-600">
                     <span className="font-medium mr-2">역할:</span>
-                    <span>{project.role}</span>
+                    <div className="flex flex-wrap gap-2 mt-2">
+                      {project.role.split(/[,·]/).map((role, index) => (
+                        <span
+                          key={index}
+                          className="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-sm font-medium"
+                        >
+                          {role.trim()}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>

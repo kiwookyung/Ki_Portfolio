@@ -21,7 +21,7 @@ const ProjectsSection = ({ projects, onProjectClick }) => {
           {filteredProjects.map((project, index) => (
             <div
               key={project.id}
-              className={`bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100 hover:scale-105 transform-gpu perspective-500 hover:rotate-y-3 hover:rotate-x-1 ${isProjectsVisible
+              className={`bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100 hover:scale-105 transform-gpu perspective-500 hover:rotate-y-3 hover:rotate-x-1 flex flex-col ${isProjectsVisible
                 ? 'animate-slide-up opacity-100 translate-y-0'
                 : 'opacity-0 translate-y-20'
                 }`}
@@ -54,7 +54,7 @@ const ProjectsSection = ({ projects, onProjectClick }) => {
               </div>
 
               {/* Project Info with 3D Hover Effects */}
-              <div className="p-6 transform-gpu">
+              <div className="p-6 transform-gpu flex-1 flex flex-col">
                 <h3 className="text-xl font-bold text-gray-900 mb-3 hover:scale-105 transition-transform duration-300">
                   {project.title}
                 </h3>
@@ -85,7 +85,7 @@ const ProjectsSection = ({ projects, onProjectClick }) => {
                 </div>
 
                 {/* Action Buttons with 3D Effect */}
-                <div className="flex items-center justify-between gap-3">
+                <div className="flex items-center justify-between gap-3 mt-auto">
                   <button
                     onClick={() => onProjectClick(project)}
                     className="flex-1 bg-white border border-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:border-blue-600 hover:text-blue-600 hover:scale-105 hover:rotate-1 transition-all duration-300 text-sm font-medium transform-gpu flex items-center justify-center space-x-2"

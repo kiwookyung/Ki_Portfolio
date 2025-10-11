@@ -38,7 +38,7 @@ const FeaturedProjectsSection = ({ projects, onProjectClick }) => {
           {featuredProjects.map((project, index) => (
             <div
               key={project.id}
-              className={`group bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100 hover:scale-105 transform ${isProjectsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              className={`group bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100 hover:scale-105 transform flex flex-col ${isProjectsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
                 }`}
               style={{
                 transitionDelay: `${index * 200}ms`,
@@ -76,7 +76,7 @@ const FeaturedProjectsSection = ({ projects, onProjectClick }) => {
               </div>
 
               {/* Project Info */}
-              <div className="p-8">
+              <div className="p-8 flex-1 flex flex-col">
                 <div className="flex items-start justify-between mb-4">
                   <h3 className="text-2xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
                     {project.title}
@@ -99,7 +99,7 @@ const FeaturedProjectsSection = ({ projects, onProjectClick }) => {
                 </div>
 
                 {/* Tech Stack */}
-                <div className="flex flex-wrap gap-2 mb-6">
+                <div className="flex flex-wrap gap-2 mb-6 h-20 overflow-hidden">
                   {project.tech.slice(0, 5).map((tech, techIndex) => (
                     <span
                       key={techIndex}
@@ -117,7 +117,7 @@ const FeaturedProjectsSection = ({ projects, onProjectClick }) => {
 
                 {/* Achievements */}
                 {project.achievements && (
-                  <div className="mb-6 bg-gradient-to-r from-yellow-50 to-orange-50 p-4 rounded-lg border border-yellow-200">
+                  <div className="mb-6 bg-gradient-to-r from-yellow-50 to-orange-50 p-4 rounded-lg border border-yellow-200 flex-1">
                     <h4 className="font-semibold text-gray-900 mb-2 flex items-center gap-2">
                       <Award size={16} className="text-yellow-600" />
                       주요 성과
@@ -134,7 +134,7 @@ const FeaturedProjectsSection = ({ projects, onProjectClick }) => {
                 )}
 
                 {/* Action Buttons */}
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3 mt-auto">
                   <button
                     onClick={() => onProjectClick(project)}
                     className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-3 rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 text-sm font-semibold flex items-center justify-center gap-2 shadow-lg hover:shadow-xl hover:scale-105 transform"

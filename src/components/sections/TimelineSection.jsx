@@ -6,6 +6,16 @@ const TimelineSection = () => {
   const [headerRef, isHeaderVisible] = useIntersectionObserver();
   const [timelineRef, isTimelineVisible] = useIntersectionObserver();
 
+  // 시간순 정렬 (최신순)
+  const sortedCareer = [...career].sort((a, b) => {
+    // 진행 중인 항목(end가 null)은 맨 위로
+    if (a.end === null && b.end !== null) return -1;
+    if (a.end !== null && b.end === null) return 1;
+
+    // start 날짜로 정렬 (YYYY-MM 형식)
+    return b.start.localeCompare(a.start);
+  });
+
   const getIcon = (type) => {
     switch (type) {
       case 'education':
@@ -14,8 +24,25 @@ const TimelineSection = () => {
         return <Briefcase size={24} />;
       case 'competition':
         return <Trophy size={24} />;
+      case 'activity':
+        return <BookOpen size={24} />;
       default:
         return <BookOpen size={24} />;
+    }
+  };
+
+  const getTypeLabel = (type) => {
+    switch (type) {
+      case 'education':
+        return 'Education';
+      case 'project':
+        return 'Project';
+      case 'competition':
+        return 'Competition';
+      case 'activity':
+        return 'Activity';
+      default:
+        return 'Experience';
     }
   };
 
@@ -23,31 +50,43 @@ const TimelineSection = () => {
     switch (type) {
       case 'education':
         return {
-          bg: 'bg-blue-50',
-          border: 'border-blue-200',
+          border: 'border-blue-500',
           icon: 'bg-blue-500',
           text: 'text-blue-600',
+          typeBg: 'bg-blue-500',
+          typeText: 'text-white',
         };
       case 'project':
         return {
-          bg: 'bg-green-50',
-          border: 'border-green-200',
+          border: 'border-green-500',
           icon: 'bg-green-500',
           text: 'text-green-600',
+          typeBg: 'bg-green-500',
+          typeText: 'text-white',
         };
       case 'competition':
         return {
-          bg: 'bg-yellow-50',
-          border: 'border-yellow-200',
+          border: 'border-yellow-500',
           icon: 'bg-yellow-500',
           text: 'text-yellow-600',
+          typeBg: 'bg-yellow-500',
+          typeText: 'text-white',
+        };
+      case 'activity':
+        return {
+          border: 'border-purple-500',
+          icon: 'bg-purple-500',
+          text: 'text-purple-600',
+          typeBg: 'bg-purple-500',
+          typeText: 'text-white',
         };
       default:
         return {
-          bg: 'bg-gray-50',
-          border: 'border-gray-200',
+          border: 'border-gray-500',
           icon: 'bg-gray-500',
           text: 'text-gray-600',
+          typeBg: 'bg-gray-500',
+          typeText: 'text-white',
         };
     }
   };
@@ -79,7 +118,7 @@ const TimelineSection = () => {
 
           {/* Timeline Items */}
           <div className="space-y-12">
-            {career.map((item, index) => {
+            {sortedCareer.map((item, index) => {
               const colors = getColor(item.type);
               const isEven = index % 2 === 0;
 
@@ -95,21 +134,29 @@ const TimelineSection = () => {
                   <div className={`flex flex-col md:flex-row items-center gap-8 ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
                     {/* Content Card */}
                     <div className={`w-full md:w-5/12 ${isEven ? 'md:text-right' : 'md:text-left'}`}>
-                      <div className={`bg-white rounded-2xl p-6 shadow-xl border ${colors.border} hover:shadow-2xl hover:scale-105 transition-all duration-500`}>
-                        {/* Period Badge */}
-                        <div className={`inline-block ${colors.bg} ${colors.text} px-4 py-2 rounded-full text-sm font-semibold mb-4`}>
-                          {item.period}
+                      <div className={`bg-white rounded-2xl p-6 shadow-xl border-2 ${colors.border} hover:shadow-2xl hover:scale-105 transition-all duration-500`}>
+                        {/* Type Badge */}
+                        <div className={`inline-block ${colors.typeBg} ${colors.typeText} px-3 py-1 rounded-full text-xs font-bold mb-4`}>
+                          {getTypeLabel(item.type)}
                         </div>
 
-                        <h3 className="text-xl font-bold text-gray-900 mb-2">
+                        {/* Organization */}
+                        <div className="text-sm text-gray-500 mb-2 font-medium">
+                          {item.org}
+                        </div>
+
+                        {/* Title */}
+                        <h3 className="text-xl font-bold text-gray-900 mb-3">
                           {item.title}
                         </h3>
-                        <p className="text-gray-600 mb-4">
+
+                        {/* Description */}
+                        <p className="text-gray-600 mb-4 leading-relaxed">
                           {item.description}
                         </p>
 
                         {/* Details List */}
-                        <ul className={`space-y-2 ${isEven ? 'md:text-right' : 'md:text-left'}`}>
+                        <ul className={`space-y-2 mb-4 ${isEven ? 'md:text-right' : 'md:text-left'}`}>
                           {item.details.map((detail, detailIndex) => (
                             <li
                               key={detailIndex}
@@ -120,6 +167,11 @@ const TimelineSection = () => {
                             </li>
                           ))}
                         </ul>
+
+                        {/* Period */}
+                        <div className={`text-sm ${colors.text} font-semibold border-t pt-3 ${isEven ? 'md:text-right' : 'md:text-left'}`}>
+                          📅 {item.period}
+                        </div>
                       </div>
                     </div>
 
