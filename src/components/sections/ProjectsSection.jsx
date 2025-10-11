@@ -31,12 +31,26 @@ const ProjectsSection = ({ projects, onProjectClick }) => {
               }}
             >
               {/* Project Image with 3D Effect */}
-              <div className="h-48 bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center relative overflow-hidden group">
-                <div className="w-20 h-20 bg-gradient-to-br from-blue-400 to-purple-600 rounded-full flex items-center justify-center text-white text-xl font-bold group-hover:scale-110 group-hover:rotate-12 transition-all duration-500">
-                  {project.title.charAt(0)}
-                </div>
-                {/* 3D Overlay Effect */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="h-48 bg-gradient-to-br from-blue-100 to-purple-100 relative overflow-hidden">
+                {project.image ? (
+                  <>
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  </>
+                ) : (
+                  <>
+                    <div className="w-full h-full flex items-center justify-center">
+                      <div className="w-20 h-20 bg-gradient-to-br from-blue-400 to-purple-600 rounded-full flex items-center justify-center text-white text-xl font-bold group-hover:scale-110 group-hover:rotate-12 transition-all duration-500">
+                        {project.title.charAt(0)}
+                      </div>
+                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  </>
+                )}
               </div>
 
               {/* Project Info with 3D Hover Effects */}

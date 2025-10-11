@@ -45,15 +45,30 @@ const FeaturedProjectsSection = ({ projects, onProjectClick }) => {
               }}
             >
               {/* Project Image */}
-              <div className="relative h-64 bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                <div className="relative z-10 w-24 h-24 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white text-3xl font-bold group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 shadow-2xl">
-                  {project.title.charAt(0)}
-                </div>
+              <div className="relative h-64 bg-gradient-to-br from-blue-100 to-purple-100 overflow-hidden">
+                {project.image ? (
+                  <>
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                  </>
+                ) : (
+                  <>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                    <div className="w-full h-full flex items-center justify-center">
+                      <div className="relative z-10 w-24 h-24 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white text-3xl font-bold group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 shadow-2xl">
+                        {project.title.charAt(0)}
+                      </div>
+                    </div>
+                  </>
+                )}
 
                 {/* Achievements Badge */}
                 {project.achievements && (
-                  <div className="absolute top-4 right-4 bg-yellow-400 text-yellow-900 px-3 py-1 rounded-full text-sm font-bold flex items-center gap-1 shadow-lg">
+                  <div className="absolute top-4 right-4 bg-yellow-400 text-yellow-900 px-3 py-1 rounded-full text-sm font-bold flex items-center gap-1 shadow-lg z-10">
                     <Award size={16} />
                     <span>수상작</span>
                   </div>
