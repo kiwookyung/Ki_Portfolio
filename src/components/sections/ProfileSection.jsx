@@ -5,6 +5,28 @@ import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
 const ProfileSection = () => {
   const [ref, isVisible] = useIntersectionObserver();
 
+  // 마크다운 스타일 강조 텍스트 파싱 함수
+  const parseMarkdownText = (text) => {
+    // **텍스트** 패턴을 찾아서 강조된 텍스트로 변환
+    const parts = text.split(/(\*\*.*?\*\*)/g);
+
+    return parts.map((part, index) => {
+      if (part.startsWith('**') && part.endsWith('**')) {
+        // **로 감싸진 텍스트는 강조 스타일 적용
+        const content = part.slice(2, -2); // ** 제거
+        return (
+          <span
+            key={index}
+            className="font-bold text-blue-700 bg-blue-50 px-1 py-0.5 rounded-md"
+          >
+            {content}
+          </span>
+        );
+      }
+      return part;
+    });
+  };
+
   return (
     <section className="py-20 bg-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -101,7 +123,7 @@ const ProfileSection = () => {
                 </h3>
                 <div className="prose prose-lg max-w-none">
                   <p className="text-gray-700 leading-relaxed whitespace-pre-line">
-                    {personalInfo.longDescription}
+                    {parseMarkdownText(personalInfo.longDescription)}
                   </p>
                 </div>
               </div>

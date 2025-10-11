@@ -6,6 +6,21 @@ const SkillsVisualizationSection = () => {
   const [headerRef, isHeaderVisible] = useIntersectionObserver();
   const [skillsRef, isSkillsVisible] = useIntersectionObserver();
 
+  const getProgressWidth = (level) => {
+    switch (level) {
+      case 'expert':
+        return 95;
+      case 'advanced':
+        return 85;
+      case 'intermediate':
+        return 70;
+      case 'basic':
+        return 50;
+      default:
+        return 0;
+    }
+  };
+
   const skillCategories = [
     {
       title: 'Frontend',
@@ -24,17 +39,17 @@ const SkillsVisualizationSection = () => {
       borderColor: 'border-green-200',
     },
     {
-      title: 'Tools',
+      title: 'DevOps & Tools',
       icon: <Wrench size={28} />,
-      skills: skills.tools,
+      skills: skills.devops_tools,
       gradient: 'from-orange-500 to-red-500',
       bgColor: 'bg-orange-50',
       borderColor: 'border-orange-200',
     },
     {
-      title: 'AI & IoT',
+      title: 'AI / IoT',
       icon: <Brain size={28} />,
-      skills: skills.ai,
+      skills: skills.ai_iot,
       gradient: 'from-purple-500 to-pink-500',
       bgColor: 'bg-purple-50',
       borderColor: 'border-purple-200',
@@ -97,19 +112,26 @@ const SkillsVisualizationSection = () => {
                         </span>
                       </div>
                       <div className="flex items-center gap-2">
-                        {skill.level >= 85 && (
+                        {skill.level === 'expert' && (
                           <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full font-semibold">
                             Expert
                           </span>
                         )}
-                        {skill.level >= 75 && skill.level < 85 && (
+                        {skill.level === 'advanced' && (
                           <span className="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded-full font-semibold">
                             Advanced
                           </span>
                         )}
-                        <span className="text-sm font-bold text-gray-700">
-                          {skill.level}%
-                        </span>
+                        {skill.level === 'intermediate' && (
+                          <span className="text-xs bg-yellow-100 text-yellow-700 px-2 py-1 rounded-full font-semibold">
+                            Intermediate
+                          </span>
+                        )}
+                        {skill.level === 'basic' && (
+                          <span className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded-full font-semibold">
+                            Basic
+                          </span>
+                        )}
                       </div>
                     </div>
 
@@ -118,7 +140,7 @@ const SkillsVisualizationSection = () => {
                       <div
                         className={`absolute top-0 left-0 h-full bg-gradient-to-r ${category.gradient} rounded-full transition-all duration-1000 ease-out group-hover:opacity-90`}
                         style={{
-                          width: isSkillsVisible ? `${skill.level}%` : '0%',
+                          width: isSkillsVisible ? `${getProgressWidth(skill.level)}%` : '0%',
                           transitionDelay: `${categoryIndex * 150 + skillIndex * 100}ms`,
                         }}
                       >

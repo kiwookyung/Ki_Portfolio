@@ -68,7 +68,7 @@ const ProjectsSection = ({ projects, onProjectClick }) => {
                 </div>
 
                 {/* Tech Stack with 3D Hover */}
-                <div className="flex flex-wrap gap-2 mb-6">
+                <div className="flex flex-wrap gap-2 mb-6 min-h-[4rem] items-start">
                   {project.tech.slice(0, 4).map((tech, techIndex) => (
                     <span
                       key={techIndex}

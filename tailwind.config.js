@@ -37,6 +37,7 @@ export default {
         shimmer: "shimmer 2s linear infinite",
         tilt: "tilt 10s infinite linear",
         parallax: "parallax 20s infinite linear",
+        blink: "blink 1s step-end infinite",
       },
       keyframes: {
         blob: {
@@ -211,6 +212,14 @@ export default {
           },
           "100%": {
             transform: "translateZ(100px) translateY(-100px)",
+          },
+        },
+        blink: {
+          "0%, 49%": {
+            opacity: "1",
+          },
+          "50%, 100%": {
+            opacity: "0",
           },
         },
       },

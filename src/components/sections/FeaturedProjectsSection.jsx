@@ -5,8 +5,11 @@ const FeaturedProjectsSection = ({ projects, onProjectClick }) => {
   const [headerRef, isHeaderVisible] = useIntersectionObserver();
   const [projectsRef, isProjectsVisible] = useIntersectionObserver();
 
-  // 대표 프로젝트 2개만 표시
-  const featuredProjects = projects ? projects.slice(0, 2) : [];
+  // 대표 프로젝트 선정 기준: 기술적 복잡도, 팀 규모, 성과 등을 고려
+  const featuredProjects = projects ? projects.filter(project => {
+    // 주요 프로젝트만 선별 (팀 프로젝트 중 기술적으로 복잡한 것들)
+    return project.id === 2 || project.id === 3; // FloodGuard, OrakGarak
+  }) : [];
 
   return (
     <section id="featured-projects" className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
@@ -66,13 +69,6 @@ const FeaturedProjectsSection = ({ projects, onProjectClick }) => {
                   </>
                 )}
 
-                {/* Achievements Badge */}
-                {project.achievements && (
-                  <div className="absolute top-4 right-4 bg-yellow-400 text-yellow-900 px-3 py-1 rounded-full text-sm font-bold flex items-center gap-1 shadow-lg z-10">
-                    <Award size={16} />
-                    <span>수상작</span>
-                  </div>
-                )}
               </div>
 
               {/* Project Info */}
@@ -99,7 +95,7 @@ const FeaturedProjectsSection = ({ projects, onProjectClick }) => {
                 </div>
 
                 {/* Tech Stack */}
-                <div className="flex flex-wrap gap-2 mb-6 h-20 overflow-hidden">
+                <div className="flex flex-wrap gap-2 mb-6 min-h-[5rem] items-start">
                   {project.tech.slice(0, 5).map((tech, techIndex) => (
                     <span
                       key={techIndex}
@@ -117,12 +113,12 @@ const FeaturedProjectsSection = ({ projects, onProjectClick }) => {
 
                 {/* Achievements */}
                 {project.achievements && (
-                  <div className="mb-6 bg-gradient-to-r from-yellow-50 to-orange-50 p-4 rounded-lg border border-yellow-200 flex-1">
-                    <h4 className="font-semibold text-gray-900 mb-2 flex items-center gap-2">
+                  <div className="mb-6 bg-gradient-to-r from-yellow-50 to-orange-50 p-6 rounded-lg border border-yellow-200 h-64 overflow-y-auto">
+                    <h4 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">
                       <Award size={16} className="text-yellow-600" />
                       주요 성과
                     </h4>
-                    <ul className="text-sm text-gray-700 space-y-1">
+                    <ul className="text-sm text-gray-700 space-y-2">
                       {project.achievements.map((achievement, idx) => (
                         <li key={idx} className="flex items-start gap-2">
                           <span className="text-yellow-600">•</span>

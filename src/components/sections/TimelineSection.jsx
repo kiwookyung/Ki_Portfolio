@@ -131,10 +131,19 @@ const TimelineSection = () => {
                     transitionDelay: `${index * 200}ms`,
                   }}
                 >
-                  <div className={`flex flex-col md:flex-row items-center gap-8 ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
+                  {/* Timeline Icon - 완벽한 중앙 정렬 */}
+                  <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20">
+                    <div className={`${colors.icon} w-16 h-16 rounded-full flex items-center justify-center text-white shadow-lg hover:scale-110 transition-transform duration-300`}>
+                      {getIcon(item.type)}
+                    </div>
+                    {/* Pulse Animation */}
+                    <div className={`absolute inset-0 ${colors.icon} rounded-full animate-ping opacity-20`}></div>
+                  </div>
+
+                  <div className={`flex flex-col md:flex-row gap-8 ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
                     {/* Content Card */}
-                    <div className={`w-full md:w-5/12 ${isEven ? 'md:text-right' : 'md:text-left'}`}>
-                      <div className={`bg-white rounded-2xl p-6 shadow-xl border-2 ${colors.border} hover:shadow-2xl hover:scale-105 transition-all duration-500`}>
+                    <div className="w-full md:w-5/12">
+                      <div className={`bg-white rounded-2xl p-6 shadow-xl border-2 ${colors.border} hover:shadow-2xl hover:scale-105 transition-all duration-500 text-left`}>
                         {/* Type Badge */}
                         <div className={`inline-block ${colors.typeBg} ${colors.typeText} px-3 py-1 rounded-full text-xs font-bold mb-4`}>
                           {getTypeLabel(item.type)}
@@ -156,7 +165,7 @@ const TimelineSection = () => {
                         </p>
 
                         {/* Details List */}
-                        <ul className={`space-y-2 mb-4 ${isEven ? 'md:text-right' : 'md:text-left'}`}>
+                        <ul className="space-y-2 mb-4 text-left">
                           {item.details.map((detail, detailIndex) => (
                             <li
                               key={detailIndex}
@@ -169,19 +178,10 @@ const TimelineSection = () => {
                         </ul>
 
                         {/* Period */}
-                        <div className={`text-sm ${colors.text} font-semibold border-t pt-3 ${isEven ? 'md:text-right' : 'md:text-left'}`}>
+                        <div className={`text-sm ${colors.text} font-semibold border-t pt-3 text-left`}>
                           📅 {item.period}
                         </div>
                       </div>
-                    </div>
-
-                    {/* Center Icon */}
-                    <div className="relative flex items-center justify-center w-16 h-16 flex-shrink-0">
-                      <div className={`${colors.icon} w-16 h-16 rounded-full flex items-center justify-center text-white shadow-lg z-10 hover:scale-110 transition-transform duration-300`}>
-                        {getIcon(item.type)}
-                      </div>
-                      {/* Pulse Animation */}
-                      <div className={`absolute inset-0 ${colors.icon} rounded-full animate-ping opacity-20`}></div>
                     </div>
 
                     {/* Empty Space for Alternating Layout */}

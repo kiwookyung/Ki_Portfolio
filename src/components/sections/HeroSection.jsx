@@ -55,9 +55,11 @@ const HeroSection = () => {
         >
           {/* 슬로건 (타이핑 효과) */}
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-4">
-            <span className="inline-block min-h-[1.2em]">
+            <span className="inline-block min-h-[1.2em] whitespace-pre-line">
               {typedText}
-              <span className="inline-block w-0.5 h-12 bg-blue-600 ml-1 animate-pulse"></span>
+              {isVisible && (
+                <span className="inline-block w-0.5 h-12 bg-blue-600 ml-1 animate-blink"></span>
+              )}
             </span>
           </h1>
 
