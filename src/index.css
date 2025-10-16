@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
 
 :root {
   font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -13,6 +13,21 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+  
+  /* 멀티 테마 시스템을 위한 CSS Variables */
+  /* 기본 테마 변수들 (fresh 테마로 초기화) */
+  --theme-background: #F4ECC4; /* Sidecar - 크림색 배경 */
+  --theme-primary: #25CC08; /* Harlequin - 밝은 그린 */
+  --theme-primary-dark: #1A8A06; /* 어두운 그린 */
+  --theme-text-primary: #1A1A1A; /* 거의 검정 */
+  --theme-text-secondary: #4A4A3A; /* 회색 */
+  --theme-accent: #5FE040; /* 밝은 그린 액센트 */
+  --theme-card: #FFFFFF; /* 순백색 카드 */
+  --theme-card-elevated: #FFFFFF; /* 강조된 카드 */
+  --theme-card-subtle: #F9F9F9; /* 은은한 카드 */
+  
+  /* 전환 애니메이션 */
+  --theme-transition: all 0.6s ease-in-out;
 }
 
 * {
@@ -111,4 +126,113 @@ html {
 
 .perspective-1000 {
   perspective: 1000px;
+}
+
+/* 테마 전환 시 부드러운 애니메이션 */
+.theme-section {
+  transition: var(--theme-transition);
+}
+
+/* ===== 테마 색상 유틸리티 클래스들 ===== */
+
+/* 배경 색상 */
+.bg-theme {
+  background-color: var(--theme-background);
+}
+
+.bg-theme-primary {
+  background-color: var(--theme-primary);
+}
+
+.bg-theme-primary-dark {
+  background-color: var(--theme-primary-dark);
+}
+
+/* 텍스트 색상 */
+.text-theme-primary {
+  color: var(--theme-text-primary);
+}
+
+.text-theme-secondary {
+  color: var(--theme-text-secondary);
+}
+
+.text-theme-accent {
+  color: var(--theme-accent);
+}
+
+/* 테두리 색상 */
+.border-theme-primary {
+  border-color: var(--theme-primary);
+}
+
+.border-theme-accent {
+  border-color: var(--theme-accent);
+}
+
+/* 호버 효과 */
+.hover-theme-primary:hover {
+  color: var(--theme-primary);
+}
+
+.hover-bg-theme-primary:hover {
+  background-color: var(--theme-primary);
+}
+
+.hover-bg-theme-primary-dark:hover {
+  background-color: var(--theme-primary-dark);
+}
+
+/* ===== 카드 스타일 ===== */
+.card-theme {
+  background-color: var(--theme-card);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.card-theme-elevated {
+  background-color: var(--theme-card-elevated);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.card-theme-subtle {
+  background-color: var(--theme-card-subtle);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+/* ===== 버튼 스타일 ===== */
+.btn-theme-primary {
+  background-color: var(--theme-primary);
+  color: white;
+  transition: var(--theme-transition);
+}
+
+.btn-theme-primary:hover {
+  background-color: var(--theme-primary-dark);
+}
+
+.btn-theme-accent {
+  background-color: var(--theme-accent);
+  color: white;
+  transition: var(--theme-transition);
+}
+
+.btn-theme-accent:hover {
+  opacity: 0.9;
+}
+
+/* ===== 태그/뱃지 스타일 ===== */
+.tag-theme-accent {
+  background-color: var(--theme-accent);
+  color: white;
+}
+
+.tag-theme-primary {
+  background-color: var(--theme-primary);
+  color: white;
+}
+
+.tag-theme-subtle {
+  background-color: var(--theme-card-subtle);
+  color: var(--theme-text-secondary);
+  border: 1px solid var(--theme-accent);
 }

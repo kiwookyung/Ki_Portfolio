@@ -1,10 +1,33 @@
 import { Code, Server, Wrench, Brain } from 'lucide-react';
 import { skills } from '../../data/skills';
 import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
+import {
+  FaReact, FaVuejs, FaRoute, FaBrain, FaChartLine, FaPython, FaBolt, FaPlug, FaGithub, FaDocker, FaAws, FaFigma, FaJenkins, FaSatelliteDish, FaMicrophone, FaPalette, FaFilm, FaEye, FaRobot
+} from 'react-icons/fa';
+import {
+  SiTypescript, SiTailwindcss, SiOpenstreetmap, SiFastapi, SiPostgresql, SiRedis, SiVite, SiPostman, SiTensorflow, SiNginx, SiGoogle
+} from 'react-icons/si';
 
 const SkillsVisualizationSection = () => {
   const [headerRef, isHeaderVisible] = useIntersectionObserver();
   const [skillsRef, isSkillsVisible] = useIntersectionObserver();
+
+  // 아이콘 매핑 함수
+  const getIcon = (iconName, iconColor) => {
+    const iconMap = {
+      FaReact, FaVuejs, FaRoute, FaBrain, FaChartLine, FaPython, FaBolt, FaPlug,
+      FaGithub, FaDocker, FaAws, FaFigma, FaJenkins, FaSatelliteDish, FaMicrophone,
+      FaPalette, FaFilm, FaEye, FaRobot,
+      SiTypescript, SiTailwindcss, SiOpenstreetmap, SiFastapi,
+      SiPostgresql, SiRedis, SiVite, SiPostman, SiTensorflow, SiNginx, SiGoogle
+    };
+
+    const IconComponent = iconMap[iconName];
+    if (IconComponent) {
+      return <IconComponent className={iconColor} />;
+    }
+    return null;
+  };
 
   const getProgressWidth = (level) => {
     switch (level) {
@@ -26,38 +49,38 @@ const SkillsVisualizationSection = () => {
       title: 'Frontend',
       icon: <Code size={28} />,
       skills: skills.frontend,
-      gradient: 'from-blue-500 to-cyan-500',
-      bgColor: 'bg-blue-50',
-      borderColor: 'border-blue-200',
+      gradient: 'from-theme-primary to-theme-primary-dark',
+      bgColor: 'bg-theme-card-subtle',
+      borderColor: 'border-theme-accent',
     },
     {
-      title: 'Backend',
+      title: '협업 & 연동',
       icon: <Server size={28} />,
-      skills: skills.backend,
-      gradient: 'from-green-500 to-emerald-500',
-      bgColor: 'bg-green-50',
-      borderColor: 'border-green-200',
+      skills: skills.collaboration,
+      gradient: 'from-emerald-500 to-teal-500',
+      bgColor: 'bg-emerald-50',
+      borderColor: 'border-emerald-200',
     },
     {
-      title: 'DevOps & Tools',
+      title: '개발 도구',
       icon: <Wrench size={28} />,
-      skills: skills.devops_tools,
-      gradient: 'from-orange-500 to-red-500',
-      bgColor: 'bg-orange-50',
-      borderColor: 'border-orange-200',
+      skills: skills.tools,
+      gradient: 'from-slate-500 to-gray-600',
+      bgColor: 'bg-slate-50',
+      borderColor: 'border-slate-200',
     },
     {
-      title: 'AI / IoT',
+      title: '통합 & 연동',
       icon: <Brain size={28} />,
-      skills: skills.ai_iot,
-      gradient: 'from-purple-500 to-pink-500',
-      bgColor: 'bg-purple-50',
-      borderColor: 'border-purple-200',
+      skills: skills.integration,
+      gradient: 'from-indigo-500 to-blue-500',
+      bgColor: 'bg-indigo-50',
+      borderColor: 'border-indigo-200',
     },
   ];
 
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-20 bg-theme">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div
@@ -65,10 +88,10 @@ const SkillsVisualizationSection = () => {
           className={`text-center mb-16 transition-all duration-1000 ${isHeaderVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}
         >
-          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl sm:text-5xl font-display font-black text-theme-primary mb-4">
             Tech Stack
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-theme-secondary max-w-3xl mx-auto font-body">
             실무에서 활용하는 다양한 기술 스택과 도구들
           </p>
         </div>
@@ -82,17 +105,17 @@ const SkillsVisualizationSection = () => {
           {skillCategories.map((category, categoryIndex) => (
             <div
               key={categoryIndex}
-              className={`bg-white rounded-2xl p-8 shadow-xl border ${category.borderColor} hover:shadow-2xl hover:scale-105 transition-all duration-500`}
+              className={`bg-gradient-to-br from-theme-card-subtle to-theme-card rounded-2xl p-8 shadow-xl border-2 border-theme-accent hover:border-theme-primary hover:shadow-2xl hover:scale-105 transition-all duration-500`}
               style={{
                 transitionDelay: `${categoryIndex * 150}ms`,
               }}
             >
               {/* Category Header */}
               <div className="flex items-center gap-4 mb-6">
-                <div className={`${category.bgColor} p-3 rounded-xl text-gray-700`}>
+                <div className="bg-theme-primary p-3 rounded-xl text-white">
                   {category.icon}
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900">
+                <h3 className="text-2xl font-bold text-theme-primary">
                   {category.title}
                 </h3>
               </div>
@@ -106,7 +129,9 @@ const SkillsVisualizationSection = () => {
                   >
                     <div className="flex items-center justify-between mb-2">
                       <div className="flex items-center gap-2">
-                        <span className="text-xl">{skill.icon}</span>
+                        <span className="text-xl flex items-center justify-center w-6 h-6">
+                          {getIcon(skill.icon, skill.iconColor)}
+                        </span>
                         <span className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
                           {skill.name}
                         </span>

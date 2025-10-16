@@ -1,5 +1,7 @@
 import { Eye, Github, Award } from 'lucide-react';
 import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
+import ThemeSection from '../common/ThemeSection';
+import { Link } from 'react-router-dom';
 
 const FeaturedProjectsSection = ({ projects, onProjectClick }) => {
   const [headerRef, isHeaderVisible] = useIntersectionObserver();
@@ -12,7 +14,7 @@ const FeaturedProjectsSection = ({ projects, onProjectClick }) => {
   }) : [];
 
   return (
-    <section id="featured-projects" className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+    <ThemeSection themeName="featured" className="py-20 bg-theme" id="featured-projects">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div
@@ -41,14 +43,14 @@ const FeaturedProjectsSection = ({ projects, onProjectClick }) => {
           {featuredProjects.map((project, index) => (
             <div
               key={project.id}
-              className={`group bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100 hover:scale-105 transform flex flex-col ${isProjectsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              className={`group card-theme rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 overflow-hidden border border-theme-accent hover:border-theme-primary hover:scale-[1.02] transform flex flex-col ${isProjectsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
                 }`}
               style={{
                 transitionDelay: `${index * 200}ms`,
               }}
             >
               {/* Project Image */}
-              <div className="relative h-64 bg-gradient-to-br from-blue-100 to-purple-100 overflow-hidden">
+              <div className="relative h-64 bg-gradient-to-br from-cyan-50 to-cyan-100 overflow-hidden">
                 {project.image ? (
                   <>
                     <img
@@ -62,7 +64,7 @@ const FeaturedProjectsSection = ({ projects, onProjectClick }) => {
                   <>
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                     <div className="w-full h-full flex items-center justify-center">
-                      <div className="relative z-10 w-24 h-24 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white text-3xl font-bold group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 shadow-2xl">
+                      <div className="relative z-10 w-20 h-20 bg-gradient-to-br from-cyan-400 to-cyan-600 rounded-xl flex items-center justify-center text-white text-xl font-bold transition-all duration-500 shadow-lg">
                         {project.title.charAt(0)}
                       </div>
                     </div>
@@ -74,22 +76,22 @@ const FeaturedProjectsSection = ({ projects, onProjectClick }) => {
               {/* Project Info */}
               <div className="p-8 flex-1 flex flex-col">
                 <div className="flex items-start justify-between mb-4">
-                  <h3 className="text-2xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
+                  <h3 className="text-2xl font-bold text-theme-primary group-hover:text-cyan-600 transition-colors duration-300">
                     {project.title}
                   </h3>
                 </div>
 
-                <p className="text-gray-600 mb-4 leading-relaxed line-clamp-2">
+                <p className="text-theme-secondary mb-4 leading-relaxed line-clamp-2">
                   {project.description}
                 </p>
 
                 {/* Role */}
-                <div className="text-sm text-gray-500 mb-4 bg-gray-50 p-3 rounded-lg">
-                  <span className="font-semibold text-gray-700">역할:</span> {project.role}
+                <div className="text-sm text-theme-secondary mb-4 bg-theme-card-subtle p-3 rounded-lg">
+                  <span className="font-semibold text-theme-primary">역할:</span> {project.role}
                 </div>
 
                 {/* Period & Team */}
-                <div className="flex items-center gap-4 mb-4 text-sm text-gray-500">
+                <div className="flex items-center gap-4 mb-4 text-sm text-theme-secondary">
                   <span>📅 {project.period}</span>
                   <span>👥 {project.teamSize}</span>
                 </div>
@@ -133,7 +135,7 @@ const FeaturedProjectsSection = ({ projects, onProjectClick }) => {
                 <div className="flex items-center gap-3 mt-auto">
                   <button
                     onClick={() => onProjectClick(project)}
-                    className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-3 rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 text-sm font-semibold flex items-center justify-center gap-2 shadow-lg hover:shadow-xl hover:scale-105 transform"
+                    className="flex-1 btn-theme-primary text-white px-4 py-3 rounded-lg hover:bg-theme-primary-dark transition-all duration-300 text-sm font-semibold flex items-center justify-center gap-2 shadow-md hover:shadow-lg"
                   >
                     <Eye size={18} />
                     <span>자세히 보기</span>
@@ -142,7 +144,7 @@ const FeaturedProjectsSection = ({ projects, onProjectClick }) => {
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-gray-900 text-white px-4 py-3 rounded-lg hover:bg-gray-800 transition-all duration-300 text-sm font-semibold flex items-center justify-center shadow-lg hover:shadow-xl hover:scale-105 transform"
+                    className="bg-slate-700 text-white px-4 py-3 rounded-lg hover:bg-slate-800 transition-all duration-300 text-sm font-semibold flex items-center justify-center shadow-md hover:shadow-lg"
                   >
                     <Github size={18} />
                   </a>
@@ -157,15 +159,16 @@ const FeaturedProjectsSection = ({ projects, onProjectClick }) => {
           className={`text-center transition-all duration-1000 delay-500 ${isProjectsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}
         >
-          <a
-            href="/projects"
+          <Link
+            to="/projects"
+            onClick={() => window.scrollTo(0, 0)}
             className="inline-block bg-white text-gray-900 px-8 py-4 rounded-lg hover:bg-gray-50 transition-all duration-300 font-semibold text-lg shadow-lg hover:shadow-xl hover:scale-105 transform border-2 border-gray-200"
           >
             모든 프로젝트 보기 →
-          </a>
+          </Link>
         </div>
       </div>
-    </section>
+    </ThemeSection>
   );
 };
 

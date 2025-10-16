@@ -5,20 +5,13 @@ export default {
     extend: {
       fontFamily: {
         inter: ["Inter", "sans-serif"],
+        montserrat: ["Montserrat", "Helvetica Neue", "sans-serif"],
+        display: ["Montserrat", "Helvetica Neue", "sans-serif"],
+        body: ["Inter", "Arial", "sans-serif"],
       },
       colors: {
-        primary: {
-          50: "#eff6ff",
-          100: "#dbeafe",
-          200: "#bfdbfe",
-          300: "#93c5fd",
-          400: "#60a5fa",
-          500: "#3b82f6",
-          600: "#2563eb",
-          700: "#1d4ed8",
-          800: "#1e40af",
-          900: "#1e3a8a",
-        },
+        // 새로운 멀티 테마 시스템을 위한 기본 색상들
+        // 실제 색상은 CSS Variables로 동적 관리
       },
       animation: {
         blob: "blob 7s infinite",

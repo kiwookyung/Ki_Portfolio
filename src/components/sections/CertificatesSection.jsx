@@ -66,7 +66,7 @@ const CertificatesSection = () => {
   };
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-theme">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div
@@ -74,10 +74,10 @@ const CertificatesSection = () => {
           className={`text-center mb-16 transition-all duration-1000 ${isHeaderVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}
         >
-          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl sm:text-5xl font-display font-black text-theme-primary mb-4">
             Certificates & Awards
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-theme-secondary max-w-3xl mx-auto font-body">
             수상 경력 및 자격증
           </p>
         </div>
@@ -92,24 +92,24 @@ const CertificatesSection = () => {
             return (
               <div
                 key={cert.id}
-                className={`bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl p-8 shadow-xl border-2 ${colors.border} hover:shadow-2xl hover:scale-105 ${colors.hover} transition-all duration-500 ${isCardsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                className={`bg-gradient-to-br from-theme-card-subtle to-theme-card rounded-2xl p-8 shadow-xl border-2 border-theme-accent hover:border-theme-primary hover:shadow-2xl hover:scale-105 transition-all duration-500 ${isCardsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
                   }`}
                 style={{
                   transitionDelay: `${index * 150}ms`,
                 }}
               >
                 {/* Type Badge */}
-                <div className={`inline-block ${colors.bg} text-white px-3 py-1 rounded-full text-xs font-bold mb-4`}>
+                <div className="inline-block bg-theme-primary text-white px-3 py-1 rounded-full text-xs font-bold mb-4">
                   {getTypeLabel(cert.type)}
                 </div>
 
                 {/* Type-specific Icon */}
-                <div className={`flex items-center justify-center w-16 h-16 ${colors.iconBg} rounded-2xl mb-6 mx-auto shadow-lg hover:rotate-12 transition-transform duration-300`}>
+                <div className="flex items-center justify-center w-16 h-16 bg-theme-primary rounded-2xl mb-6 mx-auto shadow-lg hover:rotate-12 transition-transform duration-300">
                   {getTypeIcon(cert.type)}
                 </div>
 
                 {/* Certificate Name */}
-                <h3 className="text-xl font-bold text-gray-900 mb-4 text-center leading-snug">
+                <h3 className="text-xl font-bold text-theme-primary mb-4 text-center leading-snug">
                   {cert.name}
                 </h3>
 

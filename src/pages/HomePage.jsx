@@ -3,7 +3,6 @@ import HeroSection from '../components/sections/HeroSection';
 import HighlightSkillsSection from '../components/sections/HighlightSkillsSection';
 import FeaturedProjectsSection from '../components/sections/FeaturedProjectsSection';
 import ProjectModal from '../components/common/ProjectModal';
-import Footer from '../components/common/Footer';
 import { projects } from '../data/projects';
 
 const HomePage = () => {
@@ -25,7 +24,6 @@ const HomePage = () => {
       <HeroSection />
       <HighlightSkillsSection />
       <FeaturedProjectsSection projects={projects} onProjectClick={openModal} />
-      <Footer />
 
       <ProjectModal
         project={selectedProject}

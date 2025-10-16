@@ -1,6 +1,10 @@
 import { X, Github, Calendar, Users, Award, AlertCircle, Play, Tag } from 'lucide-react';
+import { useTheme } from '../../context/ThemeContext';
 
 const ProjectModal = ({ project, isOpen, onClose }) => {
+  const { getCurrentThemeColors } = useTheme();
+  const themeColors = getCurrentThemeColors();
+
   if (!isOpen || !project) return null;
 
   return (
@@ -15,8 +19,13 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
         {/* Modal panel */}
         <div className="inline-block align-bottom bg-white rounded-2xl text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-4xl sm:w-full">
           {/* Header */}
-          <div className="bg-gradient-to-r from-purple-600 to-blue-600 px-6 py-4 flex justify-between items-center">
-            <h3 className="text-2xl font-bold text-white">{project.title}</h3>
+          <div
+            className="px-6 py-4 flex justify-between items-center"
+            style={{
+              background: `linear-gradient(135deg, ${themeColors.primary}E6, ${themeColors.primaryDark}E6)`
+            }}
+          >
+            <h3 className="text-2xl font-display font-black text-white">{project.title}</h3>
             <button
               onClick={onClose}
               className="text-white hover:text-gray-200 transition-colors duration-200"
@@ -29,7 +38,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
           <div className="px-6 py-6">
             {/* Project Image */}
             <div className="mb-6">
-              <div className="h-64 bg-gradient-to-br from-blue-100 to-purple-100 rounded-xl overflow-hidden">
+              <div className="h-64 bg-gradient-to-br from-primary-100 to-primary-200 rounded-xl overflow-hidden">
                 {project.image ? (
                   <img
                     src={project.image}
@@ -38,7 +47,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
                   />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center">
-                    <div className="w-32 h-32 bg-gradient-to-br from-blue-400 to-purple-600 rounded-full flex items-center justify-center text-white text-4xl font-bold">
+                    <div className="w-32 h-32 bg-gradient-to-br from-primary-400 to-primary-600 rounded-full flex items-center justify-center text-white text-4xl font-bold">
                       {project.title.charAt(0)}
                     </div>
                   </div>
@@ -71,7 +80,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
                       {project.teamSize.split(/[,(]/).map((member, index) => (
                         <span
                           key={index}
-                          className="bg-green-50 text-green-700 px-3 py-1 rounded-full text-sm font-medium"
+                          className="bg-gradient-to-r from-teal-100 to-teal-200 text-teal-800 px-3 py-1 rounded-lg text-sm font-medium"
                         >
                           {member.trim().replace(/[()]/g, '')}
                         </span>
@@ -84,7 +93,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
                       {project.role.split(/[,·]/).map((role, index) => (
                         <span
                           key={index}
-                          className="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-sm font-medium"
+                          className="bg-gradient-to-r from-indigo-100 to-indigo-200 text-indigo-800 px-3 py-1 rounded-lg text-sm font-medium"
                         >
                           {role.trim()}
                         </span>
@@ -102,7 +111,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
                 {project.tech.map((tech, index) => (
                   <span
                     key={index}
-                    className="bg-gradient-to-r from-blue-100 to-purple-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium"
+                    className="bg-gradient-to-r from-orange-100 to-orange-200 text-orange-800 px-3 py-1 rounded-lg text-sm font-medium"
                   >
                     {tech}
                   </span>
@@ -148,7 +157,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
                   {project.tags.map((tag, index) => (
                     <span
                       key={index}
-                      className="bg-gradient-to-r from-purple-100 to-pink-100 text-purple-700 px-3 py-1 rounded-full text-sm font-medium flex items-center gap-1"
+                      className="bg-gradient-to-r from-primary-100 to-primary-200 text-primary-700 px-3 py-1 rounded-full text-sm font-medium flex items-center gap-1"
                     >
                       <Tag size={14} />
                       {tag}
@@ -164,7 +173,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
                 href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-gray-900 text-white px-8 py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors duration-200 flex items-center space-x-2"
+                className="bg-slate-700 text-white px-8 py-3 rounded-lg font-medium hover:bg-slate-800 transition-colors duration-200 flex items-center space-x-2"
               >
                 <Github size={20} />
                 <span>GitHub 보기</span>
@@ -174,7 +183,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
                   href={project.demo}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3 rounded-lg font-medium hover:from-blue-700 hover:to-purple-700 transition-colors duration-200 flex items-center space-x-2"
+                  className="btn-theme-primary text-white px-8 py-3 rounded-lg font-medium hover:bg-theme-primary-dark transition-colors duration-200 flex items-center space-x-2"
                 >
                   <Play size={20} />
                   <span>데모 보기</span>

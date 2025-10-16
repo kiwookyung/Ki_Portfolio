@@ -50,49 +50,49 @@ const TimelineSection = () => {
     switch (type) {
       case 'education':
         return {
-          border: 'border-blue-500',
-          icon: 'bg-blue-500',
-          text: 'text-blue-600',
-          typeBg: 'bg-blue-500',
+          border: 'border-theme-primary',
+          icon: 'bg-theme-primary',
+          text: 'text-theme-primary',
+          typeBg: 'bg-theme-primary',
           typeText: 'text-white',
         };
       case 'project':
         return {
-          border: 'border-green-500',
-          icon: 'bg-green-500',
-          text: 'text-green-600',
-          typeBg: 'bg-green-500',
+          border: 'border-theme-accent',
+          icon: 'bg-theme-accent',
+          text: 'text-theme-accent',
+          typeBg: 'bg-theme-accent',
           typeText: 'text-white',
         };
       case 'competition':
         return {
-          border: 'border-yellow-500',
-          icon: 'bg-yellow-500',
-          text: 'text-yellow-600',
-          typeBg: 'bg-yellow-500',
+          border: 'border-theme-primary-dark',
+          icon: 'bg-theme-primary-dark',
+          text: 'text-theme-primary-dark',
+          typeBg: 'bg-theme-primary-dark',
           typeText: 'text-white',
         };
       case 'activity':
         return {
-          border: 'border-purple-500',
-          icon: 'bg-purple-500',
-          text: 'text-purple-600',
-          typeBg: 'bg-purple-500',
+          border: 'border-theme-accent',
+          icon: 'bg-theme-accent',
+          text: 'text-theme-accent',
+          typeBg: 'bg-theme-accent',
           typeText: 'text-white',
         };
       default:
         return {
-          border: 'border-gray-500',
-          icon: 'bg-gray-500',
-          text: 'text-gray-600',
-          typeBg: 'bg-gray-500',
+          border: 'border-theme-primary',
+          icon: 'bg-theme-primary',
+          text: 'text-theme-primary',
+          typeBg: 'bg-theme-primary',
           typeText: 'text-white',
         };
     }
   };
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-theme">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div
@@ -100,10 +100,10 @@ const TimelineSection = () => {
           className={`text-center mb-16 transition-all duration-1000 ${isHeaderVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}
         >
-          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl sm:text-5xl font-display font-black text-theme-primary mb-4">
             Education & Experience
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-theme-secondary max-w-3xl mx-auto font-body">
             학습과 경험을 통한 성장의 여정
           </p>
         </div>
@@ -143,7 +143,7 @@ const TimelineSection = () => {
                   <div className={`flex flex-col md:flex-row gap-8 ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
                     {/* Content Card */}
                     <div className="w-full md:w-5/12">
-                      <div className={`bg-white rounded-2xl p-6 shadow-xl border-2 ${colors.border} hover:shadow-2xl hover:scale-105 transition-all duration-500 text-left`}>
+                      <div className={`bg-gradient-to-br from-theme-card-subtle to-theme-card rounded-2xl p-6 shadow-xl border-2 ${colors.border} hover:border-theme-primary hover:shadow-2xl hover:scale-105 transition-all duration-500 text-left`}>
                         {/* Type Badge */}
                         <div className={`inline-block ${colors.typeBg} ${colors.typeText} px-3 py-1 rounded-full text-xs font-bold mb-4`}>
                           {getTypeLabel(item.type)}

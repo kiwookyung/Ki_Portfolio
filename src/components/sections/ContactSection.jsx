@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { personalInfo } from '../../data/personal';
-import { Mail, Github, Linkedin, ExternalLink, MapPin, Phone, Lightbulb, Send } from 'lucide-react';
+import { Mail, Github, FileText, MapPin, Phone, Lightbulb, Send } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -24,12 +25,35 @@ const ContactSection = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    setTimeout(() => {
-      alert('메시지가 성공적으로 전송되었습니다!');
+    // EmailJS 설정 (실제 사용 시 아래 값들을 EmailJS 대시보드에서 가져와야 합니다)
+    const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID; // EmailJS Template ID
+    const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY; // EmailJS Public Key
+
+    try {
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+        to_email: personalInfo.profile.email,
+      };
+
+      await emailjs.send(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        templateParams,
+        PUBLIC_KEY
+      );
+
+      alert('✅ 메시지가 성공적으로 전송되었습니다!');
       setFormData({ name: '', email: '', subject: '', message: '' });
+    } catch (error) {
+      console.error('EmailJS Error:', error);
+      alert('❌ 메시지 전송에 실패했습니다. 다시 시도해주세요.');
+    } finally {
       setIsSubmitting(false);
-    }, 1000);
+    }
   };
 
   const contactMethods = [
@@ -60,17 +84,21 @@ const ContactSection = () => {
     {
       icon: Github,
       href: personalInfo.profile.github,
-      bgColor: "bg-gray-900 hover:bg-gray-800"
+      bgColor: "bg-gray-900 hover:bg-gray-800",
+      label: "GitHub"
     },
     {
-      icon: ExternalLink,
-      href: personalInfo.profile.blog || '#',
-      bgColor: "bg-blue-600 hover:bg-blue-700"
+      icon: Mail,
+      href: `mailto:${personalInfo.profile.email}`,
+      bgColor: "bg-red-600 hover:bg-red-700",
+      label: "Email"
     },
     {
-      icon: Linkedin,
-      href: personalInfo.profile.linkedin,
-      bgColor: "bg-blue-500 hover:bg-blue-600"
+      icon: FileText,
+      href: personalInfo.profile.resume,
+      bgColor: "bg-blue-600 hover:bg-blue-700",
+      label: "Resume",
+      download: true
     }
   ];
 
@@ -84,12 +112,12 @@ const ContactSection = () => {
   ];
 
   return (
-    <section id="contact" className="py-20 bg-white">
+    <section id="contact" className="py-20 bg-theme">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-5xl font-bold text-gray-900 mb-6">Contact</h2>
-          <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+          <h2 className="text-5xl font-display font-black text-theme-primary mb-6">Contact</h2>
+          <p className="text-xl text-theme-secondary max-w-4xl mx-auto leading-relaxed font-body">
             새로운 기회와 협업에 항상 열려있습니다. 언제든지 편하게 연락주세요!
           </p>
         </div>
@@ -98,8 +126,8 @@ const ContactSection = () => {
           {/* Left Column - Contact Info & Desired Projects */}
           <div className="space-y-8">
             {/* Contact Information */}
-            <div className="bg-gray-100 rounded-2xl p-8 border border-gray-200">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">연락처 정보</h3>
+            <div className="bg-gradient-to-br from-theme-card-subtle to-theme-card rounded-2xl p-8 border-2 border-theme-accent hover:border-theme-primary shadow-xl hover:shadow-2xl transition-all duration-300">
+              <h3 className="text-2xl font-bold text-theme-primary mb-6">연락처 정보</h3>
               <div className="space-y-4">
                 {contactMethods.map((method, index) => {
                   const IconComponent = method.icon;
@@ -117,8 +145,8 @@ const ContactSection = () => {
             </div>
 
             {/* Social Links */}
-            <div className="bg-gray-100 rounded-2xl p-8 border border-gray-200">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">소셜 링크</h3>
+            <div className="bg-gradient-to-br from-theme-card-subtle to-theme-card rounded-2xl p-8 border-2 border-theme-accent hover:border-theme-primary shadow-xl hover:shadow-2xl transition-all duration-300">
+              <h3 className="text-2xl font-bold text-theme-primary mb-6">연락하기</h3>
               <div className="flex space-x-4">
                 {socialLinks.map((social, index) => {
                   const IconComponent = social.icon;
@@ -126,10 +154,11 @@ const ContactSection = () => {
                     <a
                       key={index}
                       href={social.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      target={social.download ? undefined : "_blank"}
+                      rel={social.download ? undefined : "noopener noreferrer"}
+                      download={social.download}
                       className={`w-14 h-14 ${social.bgColor} rounded-2xl flex items-center justify-center text-white transition-all duration-300 transform hover:scale-110 shadow-lg hover:shadow-xl`}
-                      aria-label={social.icon.name}
+                      aria-label={social.label}
                     >
                       <IconComponent size={24} />
                     </a>
@@ -229,7 +258,7 @@ const ContactSection = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-4 px-8 rounded-xl font-semibold text-lg hover:from-purple-700 hover:to-blue-700 transform hover:scale-105 transition-all duration-300 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-3"
+                className="w-full btn-theme-primary text-white py-4 px-8 rounded-xl font-semibold text-lg hover:bg-theme-primary-dark transform hover:scale-105 transition-all duration-300 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-3"
               >
                 {isSubmitting ? (
                   <>

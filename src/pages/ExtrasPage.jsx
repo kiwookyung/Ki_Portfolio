@@ -1,4 +1,4 @@
-import { Sparkles, ExternalLink, Github, BookOpen, Code2, Palette } from 'lucide-react';
+import { Sparkles, Mail, Github, FileText, Code2, Palette } from 'lucide-react';
 import { personalInfo } from '../data/personal';
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 
@@ -13,24 +13,28 @@ const ExtrasPage = () => {
       description: '프로젝트 소스코드와 오픈소스 활동',
       url: personalInfo.profile.github,
       icon: <Github size={32} />,
-      color: 'from-gray-700 to-gray-900',
-      bgColor: 'bg-gray-50',
+      color: 'from-text-primary to-text-secondary',
+      bgColor: 'bg-background-alt',
+      external: true,
     },
     {
-      title: 'Blog',
-      description: '기술 블로그 & 학습 기록',
-      url: personalInfo.profile.blog,
-      icon: <BookOpen size={32} />,
-      color: 'from-green-500 to-emerald-600',
-      bgColor: 'bg-green-50',
+      title: 'Email',
+      description: '이메일로 연락하기',
+      url: `mailto:${personalInfo.profile.email}`,
+      icon: <Mail size={32} />,
+      color: 'from-theme-primary to-theme-primary-dark',
+      bgColor: 'bg-theme-card-subtle',
+      external: false,
     },
     {
-      title: 'LinkedIn',
-      description: '프로페셔널 네트워크',
-      url: personalInfo.profile.linkedin,
-      icon: <ExternalLink size={32} />,
-      color: 'from-blue-500 to-blue-700',
-      bgColor: 'bg-blue-50',
+      title: 'Resume',
+      description: '이력서 다운로드',
+      url: personalInfo.profile.resume,
+      icon: <FileText size={32} />,
+      color: 'from-theme-accent to-theme-primary',
+      bgColor: 'bg-theme-card-subtle',
+      external: false,
+      download: true,
     },
   ];
 
@@ -122,39 +126,43 @@ return (
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-purple-50">
+    <div className="min-h-screen bg-theme">
       {/* Page Header */}
       <div
         ref={headerRef}
-        className={`bg-gradient-to-r from-purple-600 to-pink-600 text-white py-20 transition-all duration-1000 ${isHeaderVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        className={`py-20 transition-all duration-1000 relative overflow-hidden ${isHeaderVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
+        style={{
+          background: 'linear-gradient(135deg, rgba(37, 204, 8, 0.8), rgba(26, 138, 6, 0.9))'
+        }}
       >
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="inline-flex items-center justify-center gap-3 bg-white bg-opacity-20 px-4 py-2 rounded-full mb-6">
-            <Sparkles size={24} />
-            <span className="font-semibold">Extras</span>
+        <div className="absolute inset-0 bg-theme-primary opacity-10"></div>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <div className="inline-flex items-center justify-center gap-3 bg-white bg-opacity-20 px-4 py-2 rounded-full mb-6 backdrop-blur-sm">
+            <Sparkles size={24} className="text-white" />
+            <span className="font-semibold text-white">Extras</span>
           </div>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-display font-black mb-6 text-white">
             Playground & Links
           </h1>
-          <p className="text-xl text-purple-100 max-w-3xl mx-auto">
+          <p className="text-xl text-white max-w-3xl mx-auto font-body opacity-90">
             기술적 창의성과 지속적인 학습을 공유합니다
           </p>
         </div>
       </div>
 
       {/* Links Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-theme-card-subtle">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div
             ref={linksRef}
             className={`text-center mb-16 transition-all duration-1000 ${isLinksVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}
           >
-            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
+            <h2 className="text-4xl sm:text-5xl font-bold text-theme-primary mb-4">
               Connect With Me
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-theme-secondary max-w-3xl mx-auto">
               다양한 플랫폼에서 저와 소통해보세요
             </p>
           </div>
@@ -167,9 +175,10 @@ return (
               <a
                 key={index}
                 href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`group ${link.bgColor} rounded-2xl p-8 shadow-xl border border-gray-200 hover:shadow-2xl hover:scale-105 transition-all duration-500`}
+                target={link.external ? "_blank" : undefined}
+                rel={link.external ? "noopener noreferrer" : undefined}
+                download={link.download}
+                className={`group ${link.bgColor} rounded-2xl p-8 shadow-xl border border-theme-accent hover:border-theme-primary hover:shadow-2xl hover:scale-105 transition-all duration-500`}
                 style={{
                   transitionDelay: `${index * 150}ms`,
                 }}
@@ -177,15 +186,15 @@ return (
                 <div className={`inline-flex items-center justify-center w-16 h-16 rounded-xl bg-gradient-to-r ${link.color} text-white mb-6 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300`}>
                   {link.icon}
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors duration-300">
+                <h3 className="text-2xl font-bold text-theme-primary mb-2 group-hover:text-theme-primary-dark transition-colors duration-300">
                   {link.title}
                 </h3>
-                <p className="text-gray-600 mb-4">
+                <p className="text-theme-secondary mb-4">
                   {link.description}
                 </p>
-                <div className="flex items-center text-blue-600 font-semibold group-hover:translate-x-2 transition-transform duration-300">
-                  <span>방문하기</span>
-                  <ExternalLink size={16} className="ml-2" />
+                <div className="flex items-center text-theme-primary font-semibold group-hover:translate-x-2 transition-transform duration-300">
+                  <span>{link.download ? '다운로드' : link.external ? '방문하기' : '연락하기'}</span>
+                  {link.icon}
                 </div>
               </a>
             ))}
@@ -194,17 +203,17 @@ return (
       </section>
 
       {/* Playground Section */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+      <section className="py-20 bg-theme">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div
             ref={playgroundRef}
             className={`text-center mb-16 transition-all duration-1000 ${isPlaygroundVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}
           >
-            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
+            <h2 className="text-4xl sm:text-5xl font-display font-black text-theme-primary mb-4">
               UI Playground
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-theme-secondary max-w-3xl mx-auto font-body">
               이 포트폴리오에서 사용된 인터랙티브 요소들
             </p>
           </div>
@@ -216,7 +225,7 @@ return (
             {playgroundItems.map((item, index) => (
               <div
                 key={index}
-                className="bg-white rounded-2xl p-6 shadow-xl border border-gray-200 hover:shadow-2xl transition-all duration-500 flex flex-col"
+                className="bg-gradient-to-br from-theme-card-subtle to-theme-card rounded-2xl p-6 shadow-xl border border-theme-accent hover:border-theme-primary hover:shadow-2xl transition-all duration-500 flex flex-col"
                 style={{
                   transitionDelay: `${index * 150}ms`,
                 }}
@@ -224,10 +233,10 @@ return (
                 <div className={`inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-r ${item.gradient} text-white mb-4`}>
                   {item.icon}
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">
+                <h3 className="text-xl font-bold text-theme-primary mb-2">
                   {item.title}
                 </h3>
-                <p className="text-gray-600 mb-4 text-sm leading-relaxed">
+                <p className="text-theme-secondary mb-4 text-sm leading-relaxed">
                   {item.description}
                 </p>
 
@@ -239,14 +248,14 @@ return (
                 </div>
 
                 <div className="mb-4">
-                  <span className="text-xs font-semibold text-gray-500 uppercase">Demo:</span>
-                  <p className="text-sm text-blue-600 mt-1">{item.demo}</p>
+                  <span className="text-xs font-semibold text-theme-secondary uppercase">Demo:</span>
+                  <p className="text-sm text-theme-primary mt-1">{item.demo}</p>
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {item.tech.map((tech, techIndex) => (
                     <span
                       key={techIndex}
-                      className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs font-medium"
+                      className="bg-theme-card-subtle text-theme-secondary px-3 py-1 rounded-full text-xs font-medium border border-theme-accent"
                     >
                       {tech}
                     </span>
@@ -260,18 +269,18 @@ return (
           <div className="mt-16 space-y-6">
             {/* 주요 사용 스택 */}
             <div
-              className={`bg-gradient-to-r from-blue-50 to-cyan-50 rounded-2xl p-8 border-2 border-blue-200 transition-all duration-1000 delay-700 ${isPlaygroundVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              className={`bg-gradient-to-r from-theme-card-subtle to-theme-card rounded-2xl p-8 border-2 border-theme-accent transition-all duration-1000 delay-700 ${isPlaygroundVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
                 }`}
             >
               <div className="text-center">
                 <div className="inline-flex items-center gap-2 mb-4">
-                  <div className="w-3 h-3 bg-blue-500 rounded-full animate-pulse"></div>
-                  <h3 className="text-2xl font-bold text-gray-900">
+                  <div className="w-3 h-3 bg-theme-primary rounded-full animate-pulse"></div>
+                  <h3 className="text-2xl font-bold text-theme-primary">
                     주요 사용 스택
                   </h3>
-                  <div className="w-3 h-3 bg-blue-500 rounded-full animate-pulse"></div>
+                  <div className="w-3 h-3 bg-theme-primary rounded-full animate-pulse"></div>
                 </div>
-                <p className="text-gray-700 mb-6">
+                <p className="text-theme-secondary mb-6">
                   현재 프로젝트에서 활발히 사용 중인 기술들
                 </p>
                 <div className="flex flex-wrap items-center justify-center gap-3">
@@ -289,18 +298,18 @@ return (
 
             {/* 현재 공부 중 */}
             <div
-              className={`bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-8 border-2 border-green-200 transition-all duration-1000 delay-800 ${isPlaygroundVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              className={`bg-gradient-to-r from-theme-card-subtle to-theme-card rounded-2xl p-8 border-2 border-theme-accent transition-all duration-1000 delay-800 ${isPlaygroundVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
                 }`}
             >
               <div className="text-center">
                 <div className="inline-flex items-center gap-2 mb-4">
-                  <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-                  <h3 className="text-2xl font-bold text-gray-900">
+                  <div className="w-3 h-3 bg-theme-accent rounded-full animate-pulse"></div>
+                  <h3 className="text-2xl font-bold text-theme-primary">
                     현재 공부 중
                   </h3>
-                  <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                  <div className="w-3 h-3 bg-theme-accent rounded-full animate-pulse"></div>
                 </div>
-                <p className="text-gray-700 mb-6">
+                <p className="text-theme-secondary mb-6">
                   더 나은 개발자가 되기 위해 학습하고 있는 기술들
                 </p>
                 <div className="flex flex-wrap items-center justify-center gap-3">
@@ -318,18 +327,18 @@ return (
 
             {/* 관심 기술 */}
             <div
-              className={`bg-gradient-to-r from-purple-50 to-pink-50 rounded-2xl p-8 border-2 border-purple-200 transition-all duration-1000 delay-900 ${isPlaygroundVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              className={`bg-gradient-to-r from-theme-card-subtle to-theme-card rounded-2xl p-8 border-2 border-theme-accent transition-all duration-1000 delay-900 ${isPlaygroundVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
                 }`}
             >
               <div className="text-center">
                 <div className="inline-flex items-center gap-2 mb-4">
-                  <div className="w-3 h-3 bg-purple-500 rounded-full animate-pulse"></div>
-                  <h3 className="text-2xl font-bold text-gray-900">
+                  <div className="w-3 h-3 bg-theme-primary-dark rounded-full animate-pulse"></div>
+                  <h3 className="text-2xl font-bold text-theme-primary">
                     관심 기술
                   </h3>
-                  <div className="w-3 h-3 bg-purple-500 rounded-full animate-pulse"></div>
+                  <div className="w-3 h-3 bg-theme-primary-dark rounded-full animate-pulse"></div>
                 </div>
-                <p className="text-gray-700 mb-6">
+                <p className="text-theme-secondary mb-6">
                   앞으로 배워보고 싶은 흥미로운 기술들
                 </p>
                 <div className="flex flex-wrap items-center justify-center gap-3">
@@ -347,11 +356,11 @@ return (
 
             {/* 포트폴리오 기술 스택 요약 */}
             <div
-              className={`bg-gradient-to-r from-gray-50 to-slate-50 rounded-2xl p-6 border border-gray-200 transition-all duration-1000 delay-1000 ${isPlaygroundVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              className={`bg-gradient-to-r from-theme-card-subtle to-theme-card rounded-2xl p-6 border border-theme-accent transition-all duration-1000 delay-1000 ${isPlaygroundVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
                 }`}
             >
               <div className="text-center">
-                <p className="text-sm text-gray-600 leading-relaxed">
+                <p className="text-sm text-theme-secondary leading-relaxed">
                   💡 <strong>이 포트폴리오는</strong> React, Tailwind CSS, Vite로 구축되었으며,<br />
                   모던 웹 기술과 UX 디자인 원칙을 적용하여 제작되었습니다.
                 </p>

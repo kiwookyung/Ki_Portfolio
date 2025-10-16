@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Briefcase, Filter } from 'lucide-react';
+import { Briefcase, Filter, User, Home, Award } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import ProjectsSection from '../components/sections/ProjectsSection';
 import ProjectModal from '../components/common/ProjectModal';
 import { projects } from '../data/projects';
@@ -49,43 +50,49 @@ const ProjectsPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-purple-50">
+    <div className="min-h-screen bg-theme">
       {/* Page Header */}
-      <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-20">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="inline-flex items-center justify-center gap-3 bg-white bg-opacity-20 px-4 py-2 rounded-full mb-6">
-            <Briefcase size={24} />
-            <span className="font-semibold">Portfolio</span>
+      <div
+        className="text-white py-20 relative overflow-hidden"
+        style={{
+          background: 'linear-gradient(135deg, rgba(37, 204, 8, 0.8), rgba(26, 138, 6, 0.9))'
+        }}
+      >
+        <div className="absolute inset-0 bg-theme-primary opacity-10"></div>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <div className="inline-flex items-center justify-center gap-3 bg-white bg-opacity-20 px-4 py-2 rounded-full mb-6 backdrop-blur-sm">
+            <Briefcase size={24} className="text-white" />
+            <span className="font-semibold text-white">Portfolio</span>
           </div>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-display font-black mb-6 text-white">
             All Projects
           </h1>
-          <p className="text-xl text-blue-100 max-w-3xl mx-auto">
+          <p className="text-xl text-white max-w-3xl mx-auto font-body opacity-90">
             다양한 기술 스택과 협업 경험을 통해 완성한 프로젝트들입니다
           </p>
           <div className="mt-8 flex items-center justify-center gap-2">
-            <span className="text-blue-100">Total:</span>
-            <span className="text-3xl font-bold">{projects.length}</span>
-            <span className="text-blue-100">Projects</span>
+            <span className="text-white font-body opacity-90">Total:</span>
+            <span className="text-3xl font-display font-black text-white">{projects.length}</span>
+            <span className="text-white font-body opacity-90">Projects</span>
           </div>
         </div>
       </div>
 
       {/* Filter Section */}
-      <div className="bg-white border-b border-gray-200 sticky top-16 z-10 shadow-sm">
+      <div className="bg-theme-card border-b border-theme-accent sticky top-16 z-10 shadow-sm">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center gap-4 flex-wrap">
-            <div className="flex items-center gap-2 text-gray-700 font-semibold">
-              <Filter size={20} />
+            <div className="flex items-center gap-2 text-theme-secondary font-semibold font-display">
+              <Filter size={20} className="text-theme-primary" />
               <span>필터:</span>
             </div>
             {filterOptions.map((option) => (
               <button
                 key={option.key}
                 onClick={() => setFilter(option.key)}
-                className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${filter === option.key
-                  ? 'bg-blue-600 text-white shadow-lg scale-105'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 font-body ${filter === option.key
+                  ? 'bg-theme-primary text-white shadow-lg scale-105'
+                  : 'bg-theme-card-subtle text-theme-secondary hover:bg-theme-card border border-theme-accent'
                   }`}
               >
                 {option.label} ({option.count})
@@ -97,6 +104,79 @@ const ProjectsPage = () => {
 
       {/* Projects Grid */}
       <ProjectsSection projects={filteredProjects} onProjectClick={openModal} />
+
+      {/* Navigation Section */}
+      <div className="bg-theme-card-subtle py-16">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-display font-black text-theme-primary mb-4">
+              더 알아보기
+            </h2>
+            <p className="text-theme-secondary font-body text-lg">
+              다른 섹션에서 더 많은 정보를 확인해보세요
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Home */}
+            <Link
+              to="/"
+              className="group card-theme rounded-2xl p-8 border border-theme-accent hover:border-theme-primary transition-all duration-300 hover:shadow-lg hover:scale-105"
+              onClick={() => window.scrollTo(0, 0)}
+            >
+              <div className="text-center">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-theme-primary to-theme-primary-dark rounded-2xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <Home size={32} className="text-white" />
+                </div>
+                <h3 className="text-xl font-display font-black text-theme-primary mb-2 group-hover:text-theme-primary transition-colors duration-300">
+                  홈
+                </h3>
+                <p className="text-theme-secondary font-body text-sm">
+                  소개 및 주요 프로젝트 둘러보기
+                </p>
+              </div>
+            </Link>
+
+            {/* About */}
+            <Link
+              to="/about"
+              className="group card-theme rounded-2xl p-8 border border-theme-accent hover:border-theme-primary transition-all duration-300 hover:shadow-lg hover:scale-105"
+              onClick={() => window.scrollTo(0, 0)}
+            >
+              <div className="text-center">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-theme-primary to-theme-primary-dark rounded-2xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <User size={32} className="text-white" />
+                </div>
+                <h3 className="text-xl font-display font-black text-theme-primary mb-2 group-hover:text-theme-primary transition-colors duration-300">
+                  소개
+                </h3>
+                <p className="text-theme-secondary font-body text-sm">
+                  경력, 기술 스택, 목표 알아보기
+                </p>
+              </div>
+            </Link>
+
+            {/* Extras */}
+            <Link
+              to="/extras"
+              className="group card-theme rounded-2xl p-8 border border-theme-accent hover:border-theme-primary transition-all duration-300 hover:shadow-lg hover:scale-105"
+              onClick={() => window.scrollTo(0, 0)}
+            >
+              <div className="text-center">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-theme-primary to-theme-primary-dark rounded-2xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <Award size={32} className="text-white" />
+                </div>
+                <h3 className="text-xl font-display font-black text-theme-primary mb-2 group-hover:text-theme-primary transition-colors duration-300">
+                  Extras
+                </h3>
+                <p className="text-theme-secondary font-body text-sm">
+                  수상 경력, 링크, 기타 정보
+                </p>
+              </div>
+            </Link>
+          </div>
+        </div>
+      </div>
 
       {/* Project Modal */}
       <ProjectModal
