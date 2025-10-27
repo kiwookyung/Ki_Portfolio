@@ -15,6 +15,22 @@ export const projects = [
       "YouTube API",
       "Tailwind CSS",
     ],
+    techDetails: [
+      {
+        name: "Vue 3",
+        reason:
+          "Composition API를 활용한 컴포넌트 로직 재사용성과 명확한 데이터 흐름을 위해 선택",
+      },
+      {
+        name: "Pinia",
+        reason:
+          "Vuex보다 더 간단한 API와 TypeScript 지원으로 효율적인 상태 관리 구현",
+      },
+      {
+        name: "Tailwind CSS",
+        reason: "빠른 UI 개발과 일관된 디자인 시스템 유지로 개발 생산성 향상",
+      },
+    ],
     image: "/public/images/reeloom.png",
     github: "https://github.com/kiwookyung/SSAFY_first_PJT",
     period: "2025.04 - 2025.05",
@@ -50,6 +66,26 @@ export const projects = [
       "Leaflet (OpenStreetMap)",
       "WebSocket",
       "JWT",
+    ],
+    techDetails: [
+      {
+        name: "React",
+        reason: "컴포넌트 기반 아키텍처로 재사용 가능한 대시보드 모듈 설계",
+      },
+      {
+        name: "Zustand",
+        reason:
+          "전역 상태 관리가 필요했지만 Redux의 복잡성을 피하고 경량화된 상태 관리",
+      },
+      {
+        name: "WebSocket",
+        reason:
+          "실시간 센서 데이터 스트리밍을 위해 HTTP 폴링 대신 양방향 통신 채택",
+      },
+      {
+        name: "Leaflet",
+        reason: "경량 오픈소스 라이브러리로 지도 시각화 성능 최적화",
+      },
     ],
     image: "/images/floodguard.png",
     github: "https://github.com/kiwookyung/floodguard",
@@ -90,6 +126,26 @@ export const projects = [
       "TanStack Query",
       "Axios",
       "Web Audio API",
+    ],
+    techDetails: [
+      {
+        name: "TypeScript",
+        reason:
+          "대규모 팀 프로젝트에서 타입 안전성을 확보하고 런타임 에러를 사전에 방지",
+      },
+      {
+        name: "Web Audio API",
+        reason:
+          "브라우저에서 실시간 음성 녹음 및 오디오 시각화 기능을 네이티브하게 구현",
+      },
+      {
+        name: "Framer Motion",
+        reason: "3D 캐러셀과 인터랙티브 애니메이션으로 사용자 경험을 극대화",
+      },
+      {
+        name: "TanStack Query",
+        reason: "서버 상태 관리와 자동 캐싱으로 API 호출 최적화 및 UX 개선",
+      },
     ],
     image: "/images/orakgarak.png",
     github: "https://github.com/kiwookyung/orakgarak",
@@ -136,6 +192,26 @@ export const projects = [
       "Intersection Observer API",
       "ESLint",
       "Git",
+    ],
+    techDetails: [
+      {
+        name: "React 19",
+        reason:
+          "최신 버전의 성능 개선사항을 활용하고 포스트포넌트(Hooks) 기반 아키텍처 채택",
+      },
+      {
+        name: "Vite",
+        reason: "빠른 개발 서버와 HMR로 개발 생산성 향상",
+      },
+      {
+        name: "Tailwind CSS",
+        reason:
+          "유틸리티 퍼스트 방식으로 빠른 스타일링과 일관된 디자인 시스템 구축",
+      },
+      {
+        name: "Intersection Observer API",
+        reason: "스크롤 이벤트 대신 성능 최적화된 스크롤 애니메이션 구현",
+      },
     ],
     image: null, // TODO: 프로젝트 완성 후 스크린샷 추가 예정
     github: "https://github.com/kiwookyung/Ki_Portfolio",

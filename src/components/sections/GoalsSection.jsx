@@ -122,11 +122,8 @@ const GoalsSection = () => {
 
         {/* Next Step Banner */}
         <div
-          className={`mt-12 rounded-2xl p-8 text-center shadow-2xl transition-all duration-1000 delay-700 ${isGoalsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          className={`mt-12 bg-gradient-to-r from-theme-primary to-theme-primary-dark rounded-2xl p-8 text-center shadow-2xl transition-all duration-1000 delay-700 ${isGoalsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}
-          style={{
-            background: 'linear-gradient(135deg, rgba(127, 212, 184, 0.9), rgba(91, 196, 160, 0.9))'
-          }}
         >
           <h3 className="text-3xl font-display font-black text-white mb-4">
             Next Step 🚀

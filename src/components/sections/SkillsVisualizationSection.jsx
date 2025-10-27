@@ -57,25 +57,25 @@ const SkillsVisualizationSection = () => {
       title: '협업 & 연동',
       icon: <Server size={28} />,
       skills: skills.collaboration,
-      gradient: 'from-emerald-500 to-teal-500',
-      bgColor: 'bg-emerald-50',
-      borderColor: 'border-emerald-200',
+      gradient: 'from-theme-primary-dark via-theme-primary to-theme-accent',
+      bgColor: 'bg-theme-card-subtle',
+      borderColor: 'border-theme-accent',
     },
     {
       title: '개발 도구',
       icon: <Wrench size={28} />,
       skills: skills.tools,
-      gradient: 'from-slate-500 to-gray-600',
-      bgColor: 'bg-slate-50',
-      borderColor: 'border-slate-200',
+      gradient: 'from-gray-600 to-gray-700',
+      bgColor: 'bg-theme-card-subtle',
+      borderColor: 'border-gray-300',
     },
     {
       title: '통합 & 연동',
       icon: <Brain size={28} />,
       skills: skills.integration,
-      gradient: 'from-indigo-500 to-blue-500',
-      bgColor: 'bg-indigo-50',
-      borderColor: 'border-indigo-200',
+      gradient: 'from-theme-accent to-theme-primary',
+      bgColor: 'bg-theme-card-subtle',
+      borderColor: 'border-theme-accent',
     },
   ];
 
@@ -132,18 +132,18 @@ const SkillsVisualizationSection = () => {
                         <span className="text-xl flex items-center justify-center w-6 h-6">
                           {getIcon(skill.icon, skill.iconColor)}
                         </span>
-                        <span className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
+                        <span className="font-semibold text-gray-900 group-hover:text-theme-primary transition-colors duration-300">
                           {skill.name}
                         </span>
                       </div>
                       <div className="flex items-center gap-2">
                         {skill.level === 'expert' && (
-                          <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full font-semibold">
+                          <span className="text-xs bg-theme-primary/10 text-theme-primary border border-theme-primary/30 px-2 py-1 rounded-full font-semibold">
                             Expert
                           </span>
                         )}
                         {skill.level === 'advanced' && (
-                          <span className="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded-full font-semibold">
+                          <span className="text-xs bg-theme-accent/10 text-theme-accent border border-theme-accent/30 px-2 py-1 rounded-full font-semibold">
                             Advanced
                           </span>
                         )}
@@ -181,7 +181,7 @@ const SkillsVisualizationSection = () => {
 
         {/* Skills Summary */}
         <div
-          className={`mt-12 bg-gradient-to-r from-blue-50 via-purple-50 to-pink-50 rounded-2xl p-8 border border-gray-200 transition-all duration-1000 delay-700 ${isSkillsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          className={`mt-12 bg-gradient-to-r from-theme-card-subtle via-theme-card to-theme-card-subtle rounded-2xl p-8 border border-theme-accent transition-all duration-1000 delay-700 ${isSkillsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}
         >
           <div className="text-center">

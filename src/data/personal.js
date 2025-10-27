@@ -26,7 +26,7 @@ export const personalInfo = {
 지속적으로 **더 나은 사용자 경험을 제공하는 프론트엔드 개발자**로 성장하고자 합니다.`,
 
   profile: {
-    email: "kiwookyung@naver.com",
+    email: "dnrud4354@gmail.com",
     github: "https://github.com/kiwookyung",
     resume: "/files/resume.pdf", // 이력서 파일 경로 (public/files/resume.pdf에 업로드 필요)
     phone: "010-3682-4354",

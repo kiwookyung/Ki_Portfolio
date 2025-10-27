@@ -17,7 +17,7 @@ const ProfileSection = () => {
         return (
           <span
             key={index}
-            className="font-bold text-blue-700 bg-blue-50 px-1 py-0.5 rounded-md"
+            className="font-bold text-theme-primary bg-theme-primary/10 px-1 py-0.5 rounded-md"
           >
             {content}
           </span>
@@ -51,7 +51,7 @@ const ProfileSection = () => {
                 <h2 className="text-3xl font-bold text-gray-900 text-center mb-2">
                   {personalInfo.name}
                 </h2>
-                <p className="text-center text-blue-600 font-semibold mb-6">
+                <p className="text-center text-theme-primary font-semibold mb-6">
                   Frontend Developer
                 </p>
 
@@ -59,7 +59,7 @@ const ProfileSection = () => {
                 <div className="space-y-3 mb-6">
                   <a
                     href={`mailto:${personalInfo.profile.email}`}
-                    className="flex items-center gap-3 text-gray-600 hover:text-blue-600 transition-colors duration-300 group"
+                    className="flex items-center gap-3 text-gray-600 hover:text-theme-primary transition-colors duration-300 group"
                   >
                     <Mail size={18} className="group-hover:scale-110 transition-transform duration-300" />
                     <span className="text-sm">{personalInfo.profile.email}</span>
@@ -95,7 +95,7 @@ const ProfileSection = () => {
                   <a
                     href={personalInfo.profile.resume}
                     download
-                    className="text-gray-600 hover:text-blue-600 transition-colors duration-300 hover:scale-110 transform"
+                    className="text-gray-600 hover:text-theme-primary transition-colors duration-300 hover:scale-110 transform"
                     aria-label="Resume"
                   >
                     <FileText size={24} />

@@ -62,21 +62,21 @@ const ContactSection = () => {
       title: "이메일",
       value: personalInfo.profile.email,
       href: `mailto:${personalInfo.profile.email}`,
-      color: "text-blue-600"
+      color: "text-theme-primary"
     },
     {
       icon: Phone,
       title: "연락처",
       value: personalInfo.profile.phone,
       href: `tel:${personalInfo.profile.phone}`,
-      color: "text-green-600"
+      color: "text-theme-accent"
     },
     {
       icon: MapPin,
       title: "위치",
       value: personalInfo.profile.location,
       href: "#",
-      color: "text-purple-600"
+      color: "text-theme-primary-dark"
     }
   ];
 
@@ -168,15 +168,15 @@ const ContactSection = () => {
             </div>
 
             {/* Desired Projects */}
-            <div className="bg-yellow-50 rounded-2xl p-8 border border-yellow-200">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
-                <Lightbulb size={20} className="mr-3 text-yellow-600" />
+            <div className="bg-theme-card-subtle rounded-2xl p-8 border border-theme-accent">
+              <h3 className="text-2xl font-bold text-theme-primary mb-6 flex items-center">
+                <Lightbulb size={20} className="mr-3 text-theme-primary" />
                 함께 일하고 싶은 프로젝트
               </h3>
               <ul className="space-y-2">
                 {desiredProjects.map((project, index) => (
                   <li key={index} className="flex items-start space-x-3">
-                    <span className="text-blue-500 mt-1 text-base">•</span>
+                    <span className="text-theme-primary mt-1 text-base">•</span>
                     <span className="text-gray-700 text-base">{project}</span>
                   </li>
                 ))}
@@ -185,7 +185,7 @@ const ContactSection = () => {
           </div>
 
           {/* Right Column - Message Form */}
-          <div className="bg-gray-100 rounded-2xl p-8 border border-gray-200">
+          <div className="bg-theme-card-subtle rounded-2xl p-8 border border-theme-accent">
             <h3 className="text-2xl font-bold text-gray-900 mb-6">메시지 보내기</h3>
 
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -201,7 +201,7 @@ const ContactSection = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 text-base"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-theme-primary focus:border-transparent transition-all duration-200 text-base"
                     placeholder="홍길동"
                   />
                 </div>
@@ -217,7 +217,7 @@ const ContactSection = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 text-base"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-theme-primary focus:border-transparent transition-all duration-200 text-base"
                     placeholder="example@email.com"
                   />
                 </div>

@@ -107,7 +107,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
             {/* Tech Stack */}
             <div className="mb-6">
               <h4 className="text-lg font-semibold text-gray-900 mb-3">사용 기술</h4>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-2 mb-4">
                 {project.tech.map((tech, index) => (
                   <span
                     key={index}
@@ -117,6 +117,29 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
                   </span>
                 ))}
               </div>
+
+              {/* 핵심 기술 선택 이유 */}
+              {project.techDetails && project.techDetails.length > 0 && (
+                <div className="mt-4 space-y-3">
+                  <h5 className="text-md font-semibold text-gray-800 mb-2">핵심 기술 선택 이유</h5>
+                  {project.techDetails.map((detail, index) => (
+                    <div
+                      key={index}
+                      className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-4 border-l-4 border-blue-500"
+                    >
+                      <div className="flex items-start gap-2">
+                        <span className="inline-flex items-center justify-center w-8 h-8 bg-blue-500 text-white rounded-full text-sm font-bold flex-shrink-0">
+                          {(index + 1).toString()}
+                        </span>
+                        <div className="flex-1">
+                          <h6 className="font-semibold text-gray-900 mb-1">{detail.name}</h6>
+                          <p className="text-sm text-gray-700 leading-relaxed">{detail.reason}</p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
 
             {/* Achievements */}

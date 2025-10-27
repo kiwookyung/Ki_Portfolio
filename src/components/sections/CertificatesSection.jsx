@@ -115,18 +115,18 @@ const CertificatesSection = () => {
 
                 {/* Issuer */}
                 <div className="flex items-center gap-2 mb-3 text-gray-700">
-                  <Building size={18} className="text-orange-600 flex-shrink-0" />
+                  <Building size={18} className="text-theme-primary flex-shrink-0" />
                   <p className="text-sm font-medium">{cert.issuer}</p>
                 </div>
 
                 {/* Date */}
                 <div className="flex items-center gap-2 mb-4 text-gray-700">
-                  <Calendar size={18} className="text-orange-600 flex-shrink-0" />
+                  <Calendar size={18} className="text-theme-primary flex-shrink-0" />
                   <p className="text-sm font-medium">{cert.date}</p>
                 </div>
 
                 {/* Description */}
-                <div className="pt-4 border-t border-yellow-200">
+                <div className="pt-4 border-t border-theme-accent/30">
                   <p className="text-sm text-gray-600 leading-relaxed">
                     {cert.description}
                   </p>
@@ -138,7 +138,7 @@ const CertificatesSection = () => {
 
         {/* Summary Banner */}
         <div
-          className={`mt-12 bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 rounded-2xl p-8 text-center shadow-2xl transition-all duration-1000 delay-500 ${isCardsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          className={`mt-12 bg-gradient-to-r from-theme-primary via-theme-accent to-theme-primary-dark rounded-2xl p-8 text-center shadow-2xl transition-all duration-1000 delay-500 ${isCardsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}
         >
           <div className="flex items-center justify-center gap-3 mb-4">

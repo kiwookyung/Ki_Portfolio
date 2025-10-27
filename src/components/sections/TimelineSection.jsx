@@ -114,7 +114,7 @@ const TimelineSection = () => {
           className="relative"
         >
           {/* Vertical Line */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-blue-200 via-purple-200 to-pink-200 hidden md:block"></div>
+          <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-theme-primary via-theme-accent to-theme-primary-dark hidden md:block"></div>
 
           {/* Timeline Items */}
           <div className="space-y-12">
