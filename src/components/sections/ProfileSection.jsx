@@ -42,7 +42,7 @@ const ProfileSection = () => {
                 {/* Profile Image */}
                 <div className="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden shadow-2xl ring-4 ring-white">
                   <img
-                    src="/Ki_Portfolio/images/profile.png"
+                    src="/images/profile.png"
                     alt={personalInfo.name}
                     className="w-full h-full object-cover"
                   />
