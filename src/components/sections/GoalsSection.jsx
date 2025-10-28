@@ -80,7 +80,7 @@ const GoalsSection = () => {
           >
             <div className="bg-gradient-to-br from-theme-card-subtle to-theme-card rounded-2xl p-8 shadow-xl border-2 border-theme-accent hover:border-theme-primary h-full hover:shadow-2xl hover:scale-105 transition-all duration-500">
               <div className="flex items-center gap-3 mb-8">
-                <div className="bg-gradient-to-r from-theme-primary to-theme-primary-dark p-3 rounded-xl text-white">
+                <div className="bg-theme-primary-dark p-3 rounded-xl text-white">
                   <Rocket size={28} />
                 </div>
                 <div>
@@ -122,8 +122,11 @@ const GoalsSection = () => {
 
         {/* Next Step Banner */}
         <div
-          className={`mt-12 bg-gradient-to-r from-theme-primary to-theme-primary-dark rounded-2xl p-8 text-center shadow-2xl transition-all duration-1000 delay-700 ${isGoalsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          className={`mt-12 rounded-2xl p-8 text-center shadow-2xl transition-all duration-1000 delay-700 ${isGoalsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}
+          style={{
+            background: 'linear-gradient(135deg, var(--theme-primary), var(--theme-primary-dark))'
+          }}
         >
           <h3 className="text-3xl font-display font-black text-white mb-4">
             Next Step 🚀

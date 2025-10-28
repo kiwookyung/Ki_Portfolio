@@ -48,7 +48,7 @@ const ProfileSection = () => {
                   />
                 </div>
 
-                <h2 className="text-3xl font-bold text-gray-900 text-center mb-2">
+                <h2 className="text-3xl font-bold text-theme-text-primary text-center mb-2">
                   {personalInfo.name}
                 </h2>
                 <p className="text-center text-theme-primary font-semibold mb-6">
@@ -59,16 +59,16 @@ const ProfileSection = () => {
                 <div className="space-y-3 mb-6">
                   <a
                     href={`mailto:${personalInfo.profile.email}`}
-                    className="flex items-center gap-3 text-gray-600 hover:text-theme-primary transition-colors duration-300 group"
+                    className="flex items-center gap-3 text-theme-text-secondary hover:text-theme-primary transition-colors duration-300 group"
                   >
                     <Mail size={18} className="group-hover:scale-110 transition-transform duration-300" />
                     <span className="text-sm">{personalInfo.profile.email}</span>
                   </a>
-                  <div className="flex items-center gap-3 text-gray-600">
+                  <div className="flex items-center gap-3 text-theme-text-secondary">
                     <Phone size={18} />
                     <span className="text-sm">{personalInfo.profile.phone}</span>
                   </div>
-                  <div className="flex items-center gap-3 text-gray-600">
+                  <div className="flex items-center gap-3 text-theme-text-secondary">
                     <MapPin size={18} />
                     <span className="text-sm">{personalInfo.profile.location}</span>
                   </div>
@@ -80,14 +80,14 @@ const ProfileSection = () => {
                     href={personalInfo.profile.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-600 hover:text-gray-900 transition-colors duration-300 hover:scale-110 transform"
+                    className="text-theme-text-secondary hover:text-theme-text-primary transition-colors duration-300 hover:scale-110 transform"
                     aria-label="GitHub"
                   >
                     <Github size={24} />
                   </a>
                   <a
                     href={`mailto:${personalInfo.profile.email}`}
-                    className="text-gray-600 hover:text-red-600 transition-colors duration-300 hover:scale-110 transform"
+                    className="text-theme-text-secondary hover:text-theme-accent transition-colors duration-300 hover:scale-110 transform"
                     aria-label="Email"
                   >
                     <Mail size={24} />
@@ -95,7 +95,7 @@ const ProfileSection = () => {
                   <a
                     href={personalInfo.profile.resume}
                     download
-                    className="text-gray-600 hover:text-theme-primary transition-colors duration-300 hover:scale-110 transform"
+                    className="text-theme-text-secondary hover:text-theme-primary transition-colors duration-300 hover:scale-110 transform"
                     aria-label="Resume"
                   >
                     <FileText size={24} />

@@ -12,6 +12,8 @@ export default {
       colors: {
         // 새로운 멀티 테마 시스템을 위한 기본 색상들
         // 실제 색상은 CSS Variables로 동적 관리
+        "theme-text-primary": "var(--theme-text-primary)",
+        "theme-text-secondary": "var(--theme-text-secondary)",
       },
       animation: {
         blob: "blob 7s infinite",

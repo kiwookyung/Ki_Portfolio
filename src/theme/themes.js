@@ -8,17 +8,17 @@ export const themes = {
   fresh: {
     name: "Fresh & Clean",
     colors: {
-      background: "#F4ECC4", // Sidecar - 크림색 배경
-      primary: "#25CC08", // Harlequin - 밝은 그린
+      background: "#FAF2C3", // 사용자 지정 크림색 배경
+      primary: "#2E7D32", // 강조 포인트 그린
       primaryDark: "#1A8A06", // 가독성 개선을 위한 어두운 그린
       text: {
         primary: "#1A1A1A", // 거의 검정
-        secondary: "#4A4A3A", // 회색
+        secondary: "#555555", // 서브텍스트 회색
       },
-      accent: "#5FE040", // 밝은 그린 액센트
+      accent: "#4CAF50", // 밝은 그린 액센트
       card: "#FFFFFF", // 순백색 카드
       cardElevated: "#FFFFFF", // 강조된 카드
-      cardSubtle: "#F9F9F9", // 은은한 카드
+      cardSubtle: "#FFFFFF", // 카드 - 흰색으로 대비 향상
     },
     mood: "신선하고, 모던하고, 깔끔한",
   },

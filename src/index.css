@@ -16,15 +16,15 @@
   
   /* 멀티 테마 시스템을 위한 CSS Variables */
   /* 기본 테마 변수들 (fresh 테마로 초기화) */
-  --theme-background: #F4ECC4; /* Sidecar - 크림색 배경 */
-  --theme-primary: #25CC08; /* Harlequin - 밝은 그린 */
+  --theme-background: #FAF2C3; /* 사용자 지정 크림색 배경 */
+  --theme-primary: #2E7D32; /* 강조 포인트 그린 */
   --theme-primary-dark: #1A8A06; /* 어두운 그린 */
   --theme-text-primary: #1A1A1A; /* 거의 검정 */
-  --theme-text-secondary: #4A4A3A; /* 회색 */
-  --theme-accent: #5FE040; /* 밝은 그린 액센트 */
-  --theme-card: #FFFFFF; /* 순백색 카드 */
+  --theme-text-secondary: #555555; /* 서브텍스트 회색 */
+  --theme-accent: #4CAF50; /* 밝은 그린 액센트 */
+  --theme-card: #FFFFFF; /* 순백색 카드 - 명확한 대비 */
   --theme-card-elevated: #FFFFFF; /* 강조된 카드 */
-  --theme-card-subtle: #F9F9F9; /* 은은한 카드 */
+  --theme-card-subtle: #FFFFFF; /* 카드 - 흰색으로 대비 향상 */
   
   /* 전환 애니메이션 */
   --theme-transition: all 0.6s ease-in-out;

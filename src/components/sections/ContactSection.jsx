@@ -135,8 +135,8 @@ const ContactSection = () => {
                     <div key={index} className="flex items-center space-x-4">
                       <IconComponent size={20} className={method.color} />
                       <div>
-                        <span className="text-sm text-gray-600">{method.title}</span>
-                        <p className="text-gray-900 font-medium text-base">{method.value}</p>
+                        <span className="text-sm text-theme-text-secondary">{method.title}</span>
+                        <p className="text-theme-text-primary font-medium text-base">{method.value}</p>
                       </div>
                     </div>
                   );
@@ -177,7 +177,7 @@ const ContactSection = () => {
                 {desiredProjects.map((project, index) => (
                   <li key={index} className="flex items-start space-x-3">
                     <span className="text-theme-primary mt-1 text-base">•</span>
-                    <span className="text-gray-700 text-base">{project}</span>
+                    <span className="text-theme-text-secondary text-base">{project}</span>
                   </li>
                 ))}
               </ul>
@@ -186,12 +186,12 @@ const ContactSection = () => {
 
           {/* Right Column - Message Form */}
           <div className="bg-theme-card-subtle rounded-2xl p-8 border border-theme-accent">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">메시지 보내기</h3>
+            <h3 className="text-2xl font-bold text-theme-text-primary mb-6">메시지 보내기</h3>
 
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="name" className="block text-sm font-medium text-theme-text-secondary mb-2">
                     이름 *
                   </label>
                   <input
@@ -207,7 +207,7 @@ const ContactSection = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="email" className="block text-sm font-medium text-theme-text-secondary mb-2">
                     이메일 *
                   </label>
                   <input
@@ -224,7 +224,7 @@ const ContactSection = () => {
               </div>
 
               <div>
-                <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="subject" className="block text-sm font-medium text-theme-text-secondary mb-2">
                   제목 *
                 </label>
                 <input
@@ -240,7 +240,7 @@ const ContactSection = () => {
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="message" className="block text-sm font-medium text-theme-text-secondary mb-2">
                   메시지 *
                 </label>
                 <textarea

@@ -13,8 +13,8 @@ const ExtrasPage = () => {
       description: '프로젝트 소스코드와 오픈소스 활동',
       url: personalInfo.profile.github,
       icon: <Github size={32} />,
-      color: 'from-text-primary to-text-secondary',
-      bgColor: 'bg-background-alt',
+      bgGradient: 'linear-gradient(135deg, var(--theme-primary), var(--theme-primary-dark))',
+      bgColor: 'bg-theme-card-subtle',
       external: true,
     },
     {
@@ -22,7 +22,7 @@ const ExtrasPage = () => {
       description: '이메일로 연락하기',
       url: `mailto:${personalInfo.profile.email}`,
       icon: <Mail size={32} />,
-      color: 'from-theme-primary to-theme-primary-dark',
+      bgGradient: 'linear-gradient(135deg, var(--theme-primary), var(--theme-primary-dark))',
       bgColor: 'bg-theme-card-subtle',
       external: false,
     },
@@ -31,7 +31,7 @@ const ExtrasPage = () => {
       description: '이력서 다운로드',
       url: personalInfo.profile.resume,
       icon: <FileText size={32} />,
-      color: 'from-theme-accent to-theme-primary',
+      bgGradient: 'linear-gradient(135deg, var(--theme-primary), var(--theme-primary-dark))',
       bgColor: 'bg-theme-card-subtle',
       external: false,
       download: true,
@@ -183,7 +183,10 @@ return (
                   transitionDelay: `${index * 150}ms`,
                 }}
               >
-                <div className={`inline-flex items-center justify-center w-16 h-16 rounded-xl bg-gradient-to-r ${link.color} text-white mb-6 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300`}>
+                <div
+                  className="inline-flex items-center justify-center w-16 h-16 rounded-xl text-white mb-6 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300"
+                  style={{ background: link.bgGradient }}
+                >
                   {link.icon}
                 </div>
                 <h3 className="text-2xl font-bold text-theme-primary mb-2 group-hover:text-theme-primary-dark transition-colors duration-300">

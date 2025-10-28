@@ -57,7 +57,7 @@ const SkillsVisualizationSection = () => {
       title: '협업 & 연동',
       icon: <Server size={28} />,
       skills: skills.collaboration,
-      gradient: 'from-theme-primary-dark via-theme-primary to-theme-accent',
+      gradient: 'from-theme-primary to-theme-primary-dark',
       bgColor: 'bg-theme-card-subtle',
       borderColor: 'border-theme-accent',
     },
@@ -65,15 +65,15 @@ const SkillsVisualizationSection = () => {
       title: '개발 도구',
       icon: <Wrench size={28} />,
       skills: skills.tools,
-      gradient: 'from-gray-600 to-gray-700',
+      gradient: 'from-theme-primary to-theme-primary-dark',
       bgColor: 'bg-theme-card-subtle',
-      borderColor: 'border-gray-300',
+      borderColor: 'border-theme-accent',
     },
     {
       title: '통합 & 연동',
       icon: <Brain size={28} />,
       skills: skills.integration,
-      gradient: 'from-theme-accent to-theme-primary',
+      gradient: 'from-theme-primary to-theme-primary-dark',
       bgColor: 'bg-theme-card-subtle',
       borderColor: 'border-theme-accent',
     },
@@ -132,7 +132,7 @@ const SkillsVisualizationSection = () => {
                         <span className="text-xl flex items-center justify-center w-6 h-6">
                           {getIcon(skill.icon, skill.iconColor)}
                         </span>
-                        <span className="font-semibold text-gray-900 group-hover:text-theme-primary transition-colors duration-300">
+                        <span className="font-semibold text-theme-text-primary group-hover:text-theme-primary transition-colors duration-300">
                           {skill.name}
                         </span>
                       </div>
@@ -163,10 +163,11 @@ const SkillsVisualizationSection = () => {
                     {/* Progress Bar */}
                     <div className="relative w-full h-3 bg-gray-200 rounded-full overflow-hidden">
                       <div
-                        className={`absolute top-0 left-0 h-full bg-gradient-to-r ${category.gradient} rounded-full transition-all duration-1000 ease-out group-hover:opacity-90`}
+                        className="absolute top-0 left-0 h-full rounded-full transition-all duration-1000 ease-out group-hover:opacity-90"
                         style={{
                           width: isSkillsVisible ? `${getProgressWidth(skill.level)}%` : '0%',
                           transitionDelay: `${categoryIndex * 150 + skillIndex * 100}ms`,
+                          background: `linear-gradient(to right, var(--theme-primary), var(--theme-primary-dark))`,
                         }}
                       >
                         <div className="absolute inset-0 bg-white opacity-20 animate-pulse"></div>
@@ -185,10 +186,10 @@ const SkillsVisualizationSection = () => {
             }`}
         >
           <div className="text-center">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">
+            <h3 className="text-2xl font-bold text-theme-text-primary mb-4">
               지속적인 학습과 성장
             </h3>
-            <p className="text-gray-600 leading-relaxed max-w-3xl mx-auto">
+            <p className="text-theme-text-secondary leading-relaxed max-w-3xl mx-auto">
               새로운 기술에 대한 호기심과 열정을 가지고 꾸준히 학습하며,<br />
               실무 프로젝트를 통해 기술 역량을 지속적으로 향상시키고 있습니다.
             </p>

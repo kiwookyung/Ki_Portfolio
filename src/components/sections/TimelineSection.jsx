@@ -74,10 +74,10 @@ const TimelineSection = () => {
         };
       case 'activity':
         return {
-          border: 'border-theme-accent',
-          icon: 'bg-theme-accent',
-          text: 'text-theme-accent',
-          typeBg: 'bg-theme-accent',
+          border: 'border-theme-primary',
+          icon: 'bg-theme-primary',
+          text: 'text-theme-primary',
+          typeBg: 'bg-theme-primary',
           typeText: 'text-white',
         };
       default:
@@ -114,7 +114,12 @@ const TimelineSection = () => {
           className="relative"
         >
           {/* Vertical Line */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-theme-primary via-theme-accent to-theme-primary-dark hidden md:block"></div>
+          <div
+            className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full hidden md:block"
+            style={{
+              background: 'linear-gradient(to bottom, var(--theme-primary), var(--theme-accent), var(--theme-primary-dark))'
+            }}
+          ></div>
 
           {/* Timeline Items */}
           <div className="space-y-12">
@@ -155,12 +160,12 @@ const TimelineSection = () => {
                         </div>
 
                         {/* Title */}
-                        <h3 className="text-xl font-bold text-gray-900 mb-3">
+                        <h3 className="text-xl font-bold text-theme-text-primary mb-3">
                           {item.title}
                         </h3>
 
                         {/* Description */}
-                        <p className="text-gray-600 mb-4 leading-relaxed">
+                        <p className="text-theme-text-secondary mb-4 leading-relaxed">
                           {item.description}
                         </p>
 
@@ -169,7 +174,7 @@ const TimelineSection = () => {
                           {item.details.map((detail, detailIndex) => (
                             <li
                               key={detailIndex}
-                              className="text-sm text-gray-600 flex items-start gap-2"
+                              className="text-sm text-theme-text-secondary flex items-start gap-2"
                             >
                               <span className={colors.text}>•</span>
                               <span className="flex-1">{detail}</span>

@@ -6,38 +6,38 @@ const CertificatesSection = () => {
   const [headerRef, isHeaderVisible] = useIntersectionObserver();
   const [cardsRef, isCardsVisible] = useIntersectionObserver();
 
-  const getTypeColor = (type) => {
-    switch (type) {
-      case 'education':
-        return {
-          bg: 'bg-gradient-to-br from-blue-400 to-blue-600',
-          border: 'border-blue-200',
-          hover: 'hover:border-blue-300',
-          iconBg: 'bg-gradient-to-br from-blue-400 to-blue-600',
-        };
-      case 'award':
-        return {
-          bg: 'bg-gradient-to-br from-yellow-400 to-orange-400',
-          border: 'border-yellow-200',
-          hover: 'hover:border-yellow-300',
-          iconBg: 'bg-gradient-to-br from-yellow-400 to-orange-400',
-        };
-      case 'certificate':
-        return {
-          bg: 'bg-gradient-to-br from-green-400 to-green-600',
-          border: 'border-green-200',
-          hover: 'hover:border-green-300',
-          iconBg: 'bg-gradient-to-br from-green-400 to-green-600',
-        };
-      default:
-        return {
-          bg: 'bg-gradient-to-br from-gray-400 to-gray-600',
-          border: 'border-gray-200',
-          hover: 'hover:border-gray-300',
-          iconBg: 'bg-gradient-to-br from-gray-400 to-gray-600',
-        };
-    }
-  };
+  // const getTypeColor = (type) => {
+  //   switch (type) {
+  //     case 'education':
+  //       return {
+  //         bg: 'bg-gradient-to-br from-blue-400 to-blue-600',
+  //         border: 'border-blue-200',
+  //         hover: 'hover:border-blue-300',
+  //         iconBg: 'bg-gradient-to-br from-blue-400 to-blue-600',
+  //       };
+  //     case 'award':
+  //       return {
+  //         bg: 'bg-gradient-to-br from-yellow-400 to-orange-400',
+  //         border: 'border-yellow-200',
+  //         hover: 'hover:border-yellow-300',
+  //         iconBg: 'bg-gradient-to-br from-yellow-400 to-orange-400',
+  //       };
+  //     case 'certificate':
+  //       return {
+  //         bg: 'bg-gradient-to-br from-green-400 to-green-600',
+  //         border: 'border-green-200',
+  //         hover: 'hover:border-green-300',
+  //         iconBg: 'bg-gradient-to-br from-green-400 to-green-600',
+  //       };
+  //     default:
+  //       return {
+  //         bg: 'bg-gradient-to-br from-gray-400 to-gray-600',
+  //         border: 'border-gray-200',
+  //         hover: 'hover:border-gray-300',
+  //         iconBg: 'bg-gradient-to-br from-gray-400 to-gray-600',
+  //       };
+  //   }
+  // };
 
   const getTypeIcon = (type) => {
     switch (type) {
@@ -88,7 +88,6 @@ const CertificatesSection = () => {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           {certifications.map((cert, index) => {
-            const colors = getTypeColor(cert.type);
             return (
               <div
                 key={cert.id}
@@ -138,8 +137,11 @@ const CertificatesSection = () => {
 
         {/* Summary Banner */}
         <div
-          className={`mt-12 bg-gradient-to-r from-theme-primary via-theme-accent to-theme-primary-dark rounded-2xl p-8 text-center shadow-2xl transition-all duration-1000 delay-500 ${isCardsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          className={`mt-12 rounded-2xl p-8 text-center shadow-2xl transition-all duration-1000 delay-500 ${isCardsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}
+          style={{
+            background: 'linear-gradient(135deg, var(--theme-primary), var(--theme-primary-dark))'
+          }}
         >
           <div className="flex items-center justify-center gap-3 mb-4">
             <Award size={32} className="text-white" />
@@ -147,7 +149,7 @@ const CertificatesSection = () => {
               Total {certifications.length} Achievements
             </h3>
           </div>
-          <p className="text-white text-lg">
+          <p className="text-white text-lg opacity-95">
             지속적인 학습과 도전을 통해 성장하고 있습니다
           </p>
         </div>

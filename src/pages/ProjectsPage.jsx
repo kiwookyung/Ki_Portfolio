@@ -79,7 +79,7 @@ const ProjectsPage = () => {
       </div>
 
       {/* Filter Section */}
-      <div className="bg-theme-card border-b border-theme-accent sticky top-16 z-10 shadow-sm">
+      <div className="bg-theme-card-subtle border-b-2 border-theme-primary sticky top-16 z-10 shadow-md backdrop-blur-sm" style={{ backgroundColor: 'rgba(255, 255, 255, 0.95)' }}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center gap-4 flex-wrap">
             <div className="flex items-center gap-2 text-theme-secondary font-semibold font-display">
@@ -121,11 +121,14 @@ const ProjectsPage = () => {
             {/* Home */}
             <Link
               to="/"
-              className="group card-theme rounded-2xl p-8 border border-theme-accent hover:border-theme-primary transition-all duration-300 hover:shadow-lg hover:scale-105"
+              className="group bg-theme-card-subtle rounded-2xl p-8 border-2 border-theme-accent hover:border-theme-primary transition-all duration-300 hover:shadow-lg hover:scale-105 shadow-md"
               onClick={() => window.scrollTo(0, 0)}
             >
               <div className="text-center">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-theme-primary to-theme-primary-dark rounded-2xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                <div
+                  className="inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-4 group-hover:scale-110 transition-transform duration-300"
+                  style={{ background: 'linear-gradient(135deg, var(--theme-primary), var(--theme-primary-dark))' }}
+                >
                   <Home size={32} className="text-white" />
                 </div>
                 <h3 className="text-xl font-display font-black text-theme-primary mb-2 group-hover:text-theme-primary transition-colors duration-300">
@@ -140,11 +143,14 @@ const ProjectsPage = () => {
             {/* About */}
             <Link
               to="/about"
-              className="group card-theme rounded-2xl p-8 border border-theme-accent hover:border-theme-primary transition-all duration-300 hover:shadow-lg hover:scale-105"
+              className="group bg-theme-card-subtle rounded-2xl p-8 border-2 border-theme-accent hover:border-theme-primary transition-all duration-300 hover:shadow-lg hover:scale-105 shadow-md"
               onClick={() => window.scrollTo(0, 0)}
             >
               <div className="text-center">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-theme-primary to-theme-primary-dark rounded-2xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                <div
+                  className="inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-4 group-hover:scale-110 transition-transform duration-300"
+                  style={{ background: 'linear-gradient(135deg, var(--theme-primary), var(--theme-primary-dark))' }}
+                >
                   <User size={32} className="text-white" />
                 </div>
                 <h3 className="text-xl font-display font-black text-theme-primary mb-2 group-hover:text-theme-primary transition-colors duration-300">
@@ -159,11 +165,14 @@ const ProjectsPage = () => {
             {/* Extras */}
             <Link
               to="/extras"
-              className="group card-theme rounded-2xl p-8 border border-theme-accent hover:border-theme-primary transition-all duration-300 hover:shadow-lg hover:scale-105"
+              className="group bg-theme-card-subtle rounded-2xl p-8 border-2 border-theme-accent hover:border-theme-primary transition-all duration-300 hover:shadow-lg hover:scale-105 shadow-md"
               onClick={() => window.scrollTo(0, 0)}
             >
               <div className="text-center">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-theme-primary to-theme-primary-dark rounded-2xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                <div
+                  className="inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-4 group-hover:scale-110 transition-transform duration-300"
+                  style={{ background: 'linear-gradient(135deg, var(--theme-primary), var(--theme-primary-dark))' }}
+                >
                   <Award size={32} className="text-white" />
                 </div>
                 <h3 className="text-xl font-display font-black text-theme-primary mb-2 group-hover:text-theme-primary transition-colors duration-300">
