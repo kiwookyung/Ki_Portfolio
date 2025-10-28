@@ -8,7 +8,8 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "predeploy": "npm run build",
+    "predeploy": "npm run build && npm run copy-404",
+    "copy-404": "node scripts/copy-404.js",
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
